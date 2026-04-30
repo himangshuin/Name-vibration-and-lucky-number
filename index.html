@@ -1,743 +1,1694 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Numeriscope • Name Vibration, Lucky Number, Colour & Harmony Oracle</title>
-    <meta name="description" content="Discover your name vibration (compound number), root number, destiny number, lucky colours, harmonious numbers, numbers to avoid, and dress code guidance.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Numeriscope — Name Vibration Oracle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1c1510;
+  --ink2: #3d3025;
+  --warm-white: #fdf8f1;
+  --parchment: #f5ecdc;
+  --parchment2: #ede0ca;
+  --gold: #c89b3c;
+  --gold-light: #e8c97a;
+  --gold-dark: #9a7220;
+  --rust: #b8541e;
+  --sage: #6b8c6a;
+  --mystic: #6a5a8c;
+  --card-bg: rgba(255,252,244,0.97);
+  --border: rgba(180,150,90,0.22);
+  --shadow: 0 8px 40px -8px rgba(80,50,20,0.13), 0 2px 8px -2px rgba(80,50,20,0.08);
+  --radius: 20px;
+  --transition: 0.25s cubic-bezier(0.4,0,0.2,1);
+}
 
-        body {
-            background: linear-gradient(145deg, #fef7ef 0%, #f9f0e4 100%);
-            font-family: 'Inter', sans-serif;
-            color: #2a2418;
-            min-height: 100vh;
-            padding: 1.5rem;
-        }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-        .container {
-            max-width: 820px;
-            margin: 0 auto;
-        }
+body {
+  background: var(--warm-white);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
 
-        /* header */
-        .hero {
-            text-align: center;
-            margin-bottom: 2rem;
-            padding: 1rem 0;
-        }
+/* cosmic background */
+body::before {
+  content:'';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(200,155,60,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 85% 80%, rgba(106,90,140,0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 60% 50%, rgba(184,84,30,0.04) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+}
 
-        .floating-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(255,255,240,0.8);
-            backdrop-filter: blur(4px);
-            border-radius: 100px;
-            padding: 0.35rem 1.2rem;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            color: #b17a42;
-            border: 1px solid #ecdbba;
-            margin-bottom: 1rem;
-        }
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
 
-        h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3.5rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #2c2418, #c28a4e);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin-bottom: 0.3rem;
-        }
+/* HEADER */
+.header {
+  text-align: center;
+  padding: 2.5rem 0 2rem;
+}
 
-        .subhead {
-            color: #8b765c;
-            font-size: 0.85rem;
-            border-top: 1px solid #e5d5c2;
-            display: inline-block;
-            padding-top: 0.6rem;
-        }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, rgba(200,155,60,0.12), rgba(200,155,60,0.06));
+  border: 1px solid rgba(200,155,60,0.3);
+  border-radius: 100px;
+  padding: 5px 16px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--gold-dark);
+  margin-bottom: 1.2rem;
+}
 
-        /* main card */
-        .oracle-card {
-            background: #fffffffb;
-            border-radius: 2.5rem;
-            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.02);
-            border: 1px solid #f1e4d4;
-            padding: 1.8rem;
-            margin-bottom: 1.5rem;
-            transition: all 0.2s ease;
-        }
+.badge svg { width: 10px; height: 10px; fill: var(--gold); }
 
-        .input-group {
-            margin-bottom: 1.4rem;
-        }
+h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 6vw, 4.5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+}
 
-        .input-group label {
-            font-size: 0.7rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #c4935e;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
+h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--gold-dark);
+  display: block;
+}
 
-        .input-group input {
-            width: 100%;
-            padding: 0.9rem 0;
-            background: transparent;
-            border: none;
-            border-bottom: 2px solid #efdfce;
-            font-size: 1.05rem;
-            font-family: 'Inter', monospace;
-            transition: all 0.2s;
-            outline: none;
-            color: #2c2418;
-        }
+.header-sub {
+  font-size: 0.75rem;
+  color: #9a8870;
+  letter-spacing: 1.5px;
+  font-weight: 400;
+  margin-top: 0.8rem;
+}
 
-        .input-group input:focus {
-            border-bottom-color: #d19b60;
-        }
+/* MAIN CARD */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+  padding: 2.2rem;
+  margin-bottom: 1.2rem;
+  position: relative;
+  overflow: hidden;
+}
 
-        /* stats grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            background: #fef9f2;
-            border-radius: 1.8rem;
-            padding: 1.2rem;
-            margin: 1rem 0 0.8rem;
-            border: 1px solid #f0e2d2;
-        }
+.card::before {
+  content:'';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--gold-light), var(--gold), transparent);
+  opacity: 0.6;
+}
 
-        .stat-item {
-            text-align: center;
-        }
+/* INPUT SECTION */
+.input-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.8rem;
+}
 
-        .stat-label {
-            font-size: 0.6rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #c79a64;
-            letter-spacing: 1px;
-        }
+@media(max-width:580px){ .input-row{grid-template-columns:1fr;} }
 
-        .stat-number {
-            font-size: 2.2rem;
-            font-weight: 700;
-            font-family: 'Cormorant Garamond', monospace;
-            color: #3e2c1c;
-            line-height: 1.2;
-        }
+.field {
+  position: relative;
+}
 
-        /* dual banners */
-        .info-banner {
-            border-radius: 1.2rem;
-            padding: 1rem 1.2rem;
-            margin: 0.8rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.9rem;
-            flex-wrap: wrap;
-            backdrop-filter: blur(2px);
-        }
+.field label {
+  display: block;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--gold-dark);
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
 
-        .banner-friends {
-            background: #eef4e8;
-            border-left: 5px solid #7c9f5e;
-        }
+.field input {
+  width: 100%;
+  padding: 12px 14px;
+  background: rgba(255,255,255,0.7);
+  border: 1.5px solid var(--border);
+  border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
 
-        .banner-avoid {
-            background: #fff3e9;
-            border-left: 5px solid #daa06a;
-        }
+.field input:focus {
+  border-color: rgba(200,155,60,0.5);
+  box-shadow: 0 0 0 3px rgba(200,155,60,0.1);
+  background: #fff;
+}
 
-        .banner-icon {
-            font-size: 1.4rem;
-        }
+/* NUMBERS TRIO */
+.numbers-trio {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
 
-        .banner-text {
-            flex: 1;
-            font-size: 0.82rem;
-            font-weight: 500;
-            line-height: 1.4;
-        }
+@media(max-width:480px){ .numbers-trio{grid-template-columns:1fr; gap:0.6rem;} }
 
-        /* luck section */
-        .luck-section {
-            background: #fffaf2;
-            border-radius: 1.5rem;
-            padding: 1rem 1.2rem;
-            margin: 1rem 0;
-            border: 1px solid #f2e3d2;
-        }
+.num-block {
+  background: linear-gradient(145deg, #fffbf3, #f9f1e0);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.2rem 1rem;
+  text-align: center;
+  position: relative;
+  transition: transform var(--transition);
+  cursor: default;
+}
 
-        .section-title {
-            font-size: 0.7rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            color: #c2935c;
-            margin-bottom: 0.7rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+.num-block:hover { transform: translateY(-3px); }
 
-        .colour-strip {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 0.5rem 0;
-        }
+.num-label {
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  color: #a8926a;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
 
-        .colour-chip {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.4rem;
-        }
+.num-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+  min-height: 1em;
+  transition: all 0.3s;
+}
 
-        .colour-dot {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            border: 2px solid white;
-        }
+.num-value.loading { opacity: 0.3; }
+.num-value.pop { animation: pop 0.35s ease; }
 
-        .chip-label {
-            font-size: 0.65rem;
-            font-weight: 500;
-        }
+@keyframes pop {
+  0%{transform:scale(0.8);opacity:0.5}
+  60%{transform:scale(1.08)}
+  100%{transform:scale(1);opacity:1}
+}
 
-        .number-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.7rem;
-            margin-top: 0.5rem;
-        }
+.num-tag {
+  font-size: 0.58rem;
+  color: #b08050;
+  margin-top: 4px;
+  font-family: 'DM Mono', monospace;
+  opacity: 0.8;
+}
 
-        .number-pill {
-            background: white;
-            border-radius: 40px;
-            padding: 0.2rem 1rem;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #b97f48;
-            border: 1px solid #eedbc8;
-        }
+/* VIBRATION BAR */
+.vibration-bar {
+  background: linear-gradient(135deg, #f7ede0, #fdf5e8);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.4rem;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
 
-        /* compound block */
-        .compound-card {
-            background: #f6efe6;
-            border-radius: 1.5rem;
-            padding: 1.2rem;
-            margin: 1rem 0;
-            border-left: 5px solid #dba16d;
-        }
+.vib-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
 
-        .compound-title {
-            font-weight: 700;
-            font-size: 1rem;
-            font-family: monospace;
-            color: #7a552f;
-        }
+.vib-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--ink);
+}
 
-        .compound-desc {
-            font-size: 0.8rem;
-            line-height: 1.45;
-            margin-top: 0.4rem;
-            color: #4c3b28;
-        }
+.vib-badge {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 4px 12px;
+  border-radius: 100px;
+  background: rgba(200,155,60,0.15);
+  color: var(--gold-dark);
+  border: 1px solid rgba(200,155,60,0.25);
+}
 
-        .correction-notice {
-            background: #fff0e0;
-            border-radius: 1rem;
-            padding: 0.8rem 1rem;
-            margin-top: 0.8rem;
-            font-size: 0.72rem;
-            border-left: 3px solid #e08f4a;
-            color: #a25621;
-            display: flex;
-            gap: 0.6rem;
-            align-items: center;
-        }
+.vib-badge.neg {
+  background: rgba(184,84,30,0.12);
+  color: var(--rust);
+  border-color: rgba(184,84,30,0.25);
+}
 
-        /* dress section */
-        .dress-panel {
-            background: linear-gradient(115deg, #fef7ed, #fcf4e8);
-            border-radius: 1.5rem;
-            padding: 1.2rem;
-            margin: 1rem 0;
-            border: 1px solid #eedbc8;
-        }
+.vib-desc {
+  font-size: 0.84rem;
+  line-height: 1.65;
+  color: #4a3820;
+}
 
-        .occasion-group {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-bottom: 1rem;
-        }
+/* progress bar showing raw→compound */
+.vib-progress {
+  margin-top: 0.8rem;
+  height: 5px;
+  background: rgba(180,150,90,0.15);
+  border-radius: 100px;
+  overflow: hidden;
+}
 
-        .occ-btn {
-            background: #f3e8dd;
-            border: none;
-            border-radius: 60px;
-            padding: 0.4rem 1.1rem;
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: #81694b;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
+.vib-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold));
+  border-radius: 100px;
+  transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
+}
 
-        .occ-btn.active, .occ-btn:hover {
-            background: #cf9f6e;
-            color: white;
-        }
+/* CORRECTION BANNER */
+.correction-banner {
+  background: linear-gradient(135deg, rgba(184,84,30,0.07), rgba(184,84,30,0.04));
+  border: 1px solid rgba(184,84,30,0.2);
+  border-left: 4px solid var(--rust);
+  border-radius: 12px;
+  padding: 0.9rem 1.1rem;
+  margin-top: 0.8rem;
+  font-size: 0.76rem;
+  color: #7a3018;
+  line-height: 1.5;
+  display: none;
+}
 
-        .dress-reco {
-            background: white;
-            border-radius: 1.2rem;
-            padding: 1rem;
-            margin-top: 0.5rem;
-        }
+/* TWO COLUMN */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+@media(max-width:600px){ .two-col{grid-template-columns:1fr;} }
 
-        .swatch-group {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 0.7rem;
-        }
+/* HARMONY PANELS */
+.harmony-panel {
+  border-radius: 16px;
+  padding: 1.2rem;
+  border: 1px solid transparent;
+}
 
-        .dress-swatch {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.3rem;
-        }
+.harmony-panel.friends {
+  background: linear-gradient(135deg, #eef5e8, #f3f8ed);
+  border-color: rgba(107,140,106,0.25);
+}
 
-        .swatch-rect {
-            width: 55px;
-            height: 55px;
-            border-radius: 16px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        }
+.harmony-panel.avoid {
+  background: linear-gradient(135deg, #f5ede8, #faf3ee);
+  border-color: rgba(184,84,30,0.18);
+}
 
-        .btn-primary {
-            background: #2f261e;
-            color: white;
-            border: none;
-            width: 100%;
-            padding: 1rem;
-            border-radius: 3rem;
-            font-weight: 700;
-            font-size: 0.9rem;
-            cursor: pointer;
-            margin-top: 0.8rem;
-            transition: all 0.25s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-        }
+.panel-title {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
 
-        .btn-primary:hover {
-            background: #4a3a2c;
-            transform: translateY(-2px);
-        }
+.friends .panel-title { color: #4a7048; }
+.avoid .panel-title { color: #8a4222; }
 
-        footer {
-            text-align: center;
-            font-size: 0.6rem;
-            color: #bbaa94;
-            margin-top: 2rem;
-            padding-top: 1rem;
-            border-top: 1px solid #e8d9ca;
-        }
+.number-bubbles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
 
-        @media (max-width: 550px) {
-            .stats-grid { grid-template-columns: 1fr; gap: 0.5rem; }
-            body { padding: 1rem; }
-            h1 { font-size: 2.4rem; }
-        }
-    </style>
+.num-bubble {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: transform var(--transition);
+}
+
+.num-bubble:hover { transform: scale(1.15); }
+.friends .num-bubble { background: rgba(107,140,106,0.15); color: #3a6238; border: 1px solid rgba(107,140,106,0.3); }
+.avoid .num-bubble { background: rgba(184,84,30,0.12); color: var(--rust); border: 1px solid rgba(184,84,30,0.22); }
+
+.panel-desc { font-size: 0.73rem; color: #5a4a38; line-height: 1.5; }
+
+/* COLOUR SECTION */
+.colours-section {
+  background: linear-gradient(135deg, #fdf8f0, #f8f0e4);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.sec-title {
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--gold-dark);
+  text-transform: uppercase;
+  margin-bottom: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.colour-palette {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.colour-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: transform var(--transition);
+}
+
+.colour-chip:hover { transform: translateY(-4px); }
+
+.colour-swatch {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 4px 12px -2px rgba(0,0,0,0.12);
+  transition: box-shadow var(--transition);
+}
+
+.colour-chip:hover .colour-swatch { box-shadow: 0 8px 20px -4px rgba(0,0,0,0.18); }
+.colour-chip span { font-size: 0.62rem; font-weight: 500; color: #7a6040; text-align: center; max-width: 60px; }
+
+/* LUCKY NUMBERS */
+.lucky-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.lucky-pill {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 4px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gold-dark);
+  font-family: 'Playfair Display', serif;
+  transition: all var(--transition);
+  cursor: default;
+}
+
+.lucky-pill:hover {
+  background: var(--gold);
+  color: white;
+  border-color: var(--gold);
+  transform: scale(1.05);
+}
+
+/* DRESS ORACLE */
+.dress-section {
+  background: linear-gradient(135deg, #faf5ec, #f5ede0);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.occasion-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.occ-btn {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #8a7055;
+  cursor: pointer;
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.occ-btn:hover, .occ-btn.active {
+  background: var(--ink);
+  color: white;
+  border-color: var(--ink);
+}
+
+.dress-content {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+}
+
+.dress-swatches {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.8rem;
+}
+
+.dress-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.dress-swatch {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  border: 2px solid white;
+  box-shadow: 0 3px 10px -2px rgba(0,0,0,0.1);
+}
+
+.dress-chip span { font-size: 0.6rem; color: #7a6040; text-align: center; max-width: 60px; font-weight: 500; }
+
+.dress-advice {
+  font-size: 0.76rem;
+  color: #5a4828;
+  line-height: 1.6;
+  border-top: 1px dashed rgba(180,150,90,0.25);
+  padding-top: 0.7rem;
+  margin-top: 0.2rem;
+}
+
+/* DIVIDER */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+  margin: 1.2rem 0;
+}
+
+/* CTA BUTTON */
+.cta-btn {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: var(--ink);
+  color: white;
+  border: none;
+  border-radius: 100px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  letter-spacing: 0.5px;
+  margin-top: 0.5rem;
+}
+
+.cta-btn:hover {
+  background: #3a2c1e;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px rgba(30,20,10,0.25);
+}
+
+.cta-btn:active { transform: translateY(0); }
+
+/* ---- NEW: COMPATIBILITY TOOL ---- */
+.compat-section {
+  background: linear-gradient(135deg, #f4edf8, #f8f0fb);
+  border: 1px solid rgba(106,90,140,0.2);
+  border-radius: 16px;
+  padding: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.compat-section .sec-title { color: var(--mystic); }
+.compat-section .sec-title svg { fill: var(--mystic); }
+
+.compat-inputs {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  align-items: flex-end;
+}
+
+.compat-inputs .field { flex: 1; min-width: 140px; }
+
+.compat-btn {
+  padding: 12px 20px;
+  background: var(--mystic);
+  color: white;
+  border: none;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.compat-btn:hover { background: #5a4a7c; transform: translateY(-1px); }
+
+.compat-result {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  border: 1px solid rgba(106,90,140,0.2);
+  display: none;
+}
+
+.compat-score-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.compat-score {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--mystic);
+  min-width: 70px;
+}
+
+.compat-bar-wrap {
+  flex: 1;
+}
+
+.compat-bar-track {
+  height: 8px;
+  background: rgba(106,90,140,0.12);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.compat-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--mystic), #9a80c0);
+  border-radius: 100px;
+  transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+
+.compat-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--mystic);
+  margin-bottom: 3px;
+  letter-spacing: 1px;
+}
+
+.compat-note {
+  font-size: 0.76rem;
+  color: #5a4870;
+  line-height: 1.55;
+}
+
+/* ---- NEW: PERSONAL YEAR ---- */
+.year-section {
+  background: linear-gradient(135deg, #edf2f8, #f0f5fb);
+  border: 1px solid rgba(50,100,180,0.18);
+  border-radius: 16px;
+  padding: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.year-section .sec-title { color: #2a5080; }
+
+.year-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 0.5rem;
+}
+
+.year-chip {
+  background: white;
+  border: 1px solid rgba(50,100,180,0.15);
+  border-radius: 12px;
+  padding: 0.6rem 0.4rem;
+  text-align: center;
+  transition: all var(--transition);
+  cursor: default;
+}
+
+.year-chip.current {
+  background: linear-gradient(135deg, #2a5080, #3a70b0);
+  border-color: #2a5080;
+  box-shadow: 0 4px 14px -4px rgba(42,80,128,0.35);
+}
+
+.year-chip-yr {
+  font-size: 0.58rem;
+  font-weight: 600;
+  color: #6a90b8;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+.year-chip.current .year-chip-yr { color: rgba(255,255,255,0.75); }
+
+.year-chip-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.year-chip.current .year-chip-num { color: white; }
+
+.year-chip-label {
+  font-size: 0.55rem;
+  color: #7a90a8;
+  margin-top: 3px;
+  line-height: 1.2;
+}
+
+.year-chip.current .year-chip-label { color: rgba(255,255,255,0.7); }
+
+.year-insight {
+  background: white;
+  border: 1px solid rgba(50,100,180,0.15);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+  margin-top: 0.8rem;
+  font-size: 0.77rem;
+  color: #2a4060;
+  line-height: 1.6;
+}
+
+/* ---- NEW: BIORHYTHM MINI ---- */
+.bio-section {
+  background: linear-gradient(135deg, #f8f2e8, #faf5ec);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.bio-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.bio-row {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.bio-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #7a6040;
+  width: 70px;
+  letter-spacing: 0.5px;
+  flex-shrink: 0;
+}
+
+.bio-track {
+  flex: 1;
+  height: 8px;
+  background: rgba(180,150,90,0.12);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.bio-fill {
+  height: 100%;
+  border-radius: 100px;
+  transition: width 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+
+.bio-percent {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: #8a7050;
+  width: 36px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* TABS FOR SECTIONS */
+.section-tabs {
+  display: flex;
+  gap: 0.3rem;
+  background: rgba(180,150,90,0.08);
+  border-radius: 14px;
+  padding: 4px;
+  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.stab {
+  flex: 1;
+  min-width: 80px;
+  text-align: center;
+  padding: 7px 10px;
+  border-radius: 10px;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #8a7050;
+  cursor: pointer;
+  transition: all var(--transition);
+  background: transparent;
+  border: none;
+  letter-spacing: 0.5px;
+}
+
+.stab.active {
+  background: white;
+  color: var(--ink);
+  box-shadow: 0 2px 8px -2px rgba(80,50,20,0.12);
+}
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* SHARE BUTTON */
+.share-row {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.share-btn {
+  flex: 1;
+  min-width: 120px;
+  padding: 0.65rem 1rem;
+  border-radius: 100px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1.5px solid var(--border);
+  background: white;
+  color: var(--ink2);
+  transition: all var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.share-btn:hover { border-color: var(--gold); color: var(--gold-dark); }
+
+/* TOOLTIP */
+.tooltip-wrap { position: relative; display: inline-block; }
+.tooltip-icon {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: rgba(180,150,90,0.2);
+  color: var(--gold-dark);
+  font-size: 0.6rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: help;
+  vertical-align: middle;
+  margin-left: 4px;
+}
+
+.tooltip-content {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ink);
+  color: white;
+  font-size: 0.65rem;
+  line-height: 1.5;
+  padding: 6px 10px;
+  border-radius: 8px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 100;
+}
+
+.tooltip-wrap:hover .tooltip-content { opacity: 1; }
+
+/* TOAST */
+#toast {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--ink);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  opacity: 0;
+  transition: all 0.3s;
+  pointer-events: none;
+  z-index: 999;
+}
+
+#toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  font-size: 0.62rem;
+  color: #b0a090;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(180,150,90,0.15);
+  line-height: 1.8;
+}
+
+/* ANIM: entrance */
+.card { animation: fadeUp 0.5s ease both; }
+.card:nth-child(1) { animation-delay: 0.05s; }
+.card:nth-child(2) { animation-delay: 0.1s; }
+
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(16px); }
+  to { opacity:1; transform: translateY(0); }
+}
+
+/* empty state */
+.empty-hint {
+  text-align: center;
+  color: #c0a880;
+  font-size: 0.8rem;
+  padding: 1.5rem 0;
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+}
+
+/* ---- COSMIC INDICATOR DOTS ---- */
+.cosmic-indicator {
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+
+.cosmic-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: rgba(180,150,90,0.25);
+  transition: background 0.3s;
+}
+
+.cosmic-dot.filled {
+  background: var(--gold);
+}
+
+.cosmic-dot.half {
+  background: var(--gold-light);
+}
+</style>
 </head>
 <body>
-<div class="container">
-    <div class="hero">
-        <div class="floating-badge"><i class="fas fa-moon"></i> NUMEROLOGY ORACLE</div>
-        <h1>vibration & harmony</h1>
-        <p class="subhead">name compound · root number · destiny · friends & avoid · dress code</p>
+
+<div id="toast"></div>
+
+<div class="page">
+  <div class="header">
+    <div class="badge">
+      <svg viewBox="0 0 10 10"><polygon points="5,0 6.2,3.8 10,3.8 7,6.1 8.1,10 5,7.6 1.9,10 3,6.1 0,3.8 3.8,3.8"/></svg>
+      NUMEROLOGY ORACLE
+    </div>
+    <h1>Numeriscope<em>vibration & harmony</em></h1>
+    <p class="header-sub">NAME COMPOUND · ROOT NUMBER · DESTINY · HARMONY · DRESS CODE · COMPATIBILITY</p>
+  </div>
+
+  <!-- INPUT CARD -->
+  <div class="card">
+    <div class="input-row">
+      <div class="field">
+        <label>✦ Full Name (letters only)</label>
+        <input type="text" id="fullName" placeholder="e.g. Maya Rose" value="Maya Rose" autocomplete="off" spellcheck="false">
+      </div>
+      <div class="field">
+        <label>◆ Date of Birth</label>
+        <input type="date" id="dob" value="1995-06-21">
+      </div>
     </div>
 
-    <div class="oracle-card">
-        <div class="input-group">
-            <label><i class="fas fa-feather-alt"></i> FIRST NAME (letters only)</label>
-            <input type="text" id="fullName" placeholder="e.g. Maya Rose" value="Maya Rose">
+    <!-- NUMBERS TRIO -->
+    <div class="numbers-trio">
+      <div class="num-block">
+        <div class="num-label">Root Number
+          <span class="tooltip-wrap"><span class="tooltip-icon">?</span><span class="tooltip-content">Derived from your birth day (single digit)</span></span>
         </div>
-        <div class="input-group">
-            <label><i class="fas fa-calendar-alt"></i> DATE OF BIRTH (root & destiny)</label>
-            <input type="date" id="dob" value="1995-06-21">
+        <div class="num-value" id="rootVal">--</div>
+        <div class="num-tag" id="rootTag">—</div>
+      </div>
+      <div class="num-block">
+        <div class="num-label">Destiny Number
+          <span class="tooltip-wrap"><span class="tooltip-icon">?</span><span class="tooltip-content">Full birth date reduced to single digit</span></span>
         </div>
-
-        <!-- key numbers -->
-        <div class="stats-grid">
-            <div class="stat-item"><div class="stat-label">ROOT NUMBER</div><div class="stat-number" id="rootValue">--</div></div>
-            <div class="stat-item"><div class="stat-label">DESTINY NUMBER</div><div class="stat-number" id="destinyValue">--</div></div>
-            <div class="stat-item"><div class="stat-label">NAME VIBRATION</div><div class="stat-number" id="compoundValue">--</div></div>
+        <div class="num-value" id="destinyVal">--</div>
+        <div class="num-tag" id="destinyTag">—</div>
+      </div>
+      <div class="num-block">
+        <div class="num-label">Name Vibration
+          <span class="tooltip-wrap"><span class="tooltip-icon">?</span><span class="tooltip-content">Compound number from Chaldean name numerology (10–80)</span></span>
         </div>
-
-        <!-- friendship banner -->
-        <div id="friendsBanner" class="info-banner banner-friends" style="display: none;">
-            <div class="banner-icon"><i class="fas fa-hand-sparkles"></i></div>
-            <div class="banner-text" id="friendsMessage"></div>
-        </div>
-
-        <!-- numbers to avoid banner (gentle) -->
-        <div id="avoidBanner" class="info-banner banner-avoid" style="display: none;">
-            <div class="banner-icon"><i class="fas fa-compass"></i></div>
-            <div class="banner-text" id="avoidMessage"></div>
-        </div>
-
-        <!-- lucky colours + lucky numbers -->
-        <div class="luck-section">
-            <div class="section-title"><i class="fas fa-palette"></i> AURA COLOURS · LUCKY SHADES</div>
-            <div class="colour-strip" id="colourPalette"></div>
-            <div class="section-title" style="margin-top: 0.8rem;"><i class="fas fa-star-of-life"></i> LUCKY NUMBERS (based on root)</div>
-            <div class="number-list" id="luckyNumbersList"></div>
-        </div>
-
-        <!-- name vibration compound block -->
-        <div class="compound-card">
-            <div class="compound-title" id="compoundDisplayName">—</div>
-            <div class="compound-desc" id="vibrationDesc">Enter your name & birth date to reveal sacred name vibration.</div>
-            <div id="correctionNotice" style="display: none;" class="correction-notice">
-                <i class="fas fa-leaf"></i> <span id="correctionText">⚠️ This compound number carries challenging vibrations. A numerological name correction is recommended for greater harmony, success, and energetic flow.</span>
-            </div>
-        </div>
-
-        <!-- dress oracle section -->
-        <div class="dress-panel">
-            <div class="section-title"><i class="fas fa-vest"></i> DRESS CODE ORACLE</div>
-            <div class="occasion-group">
-                <span style="font-size:0.7rem; font-weight:600;">OCCASION</span>
-                <div>
-                    <button class="occ-btn active" data-occasion="daily">✨ Daily</button>
-                    <button class="occ-btn" data-occasion="date">❤️ Date</button>
-                    <button class="occ-btn" data-occasion="meeting">🤝 Meeting</button>
-                    <button class="occ-btn" data-occasion="party">🎉 Party</button>
-                    <button class="occ-btn" data-occasion="spiritual">🕯️ Spiritual</button>
-                </div>
-            </div>
-            <div class="dress-reco">
-                <div class="swatch-group" id="dressColoursList"></div>
-                <div id="dressAdviceText" style="font-size:0.75rem; color:#5f4a34; border-top: 1px dashed #eedbc8; padding-top: 0.6rem;">Select occasion to see clothing guidance</div>
-            </div>
-        </div>
-
-        <button class="btn-primary" id="syncBtn"><i class="fas fa-gem"></i> Reveal complete profile</button>
+        <div class="num-value" id="compoundVal">--</div>
+        <div class="num-tag" id="compoundTag">—</div>
+      </div>
     </div>
-    <footer>
-        <i class="fas fa-circle-nodes"></i> root number friends & avoid list · name compound 10–80 · ancient numerology wisdom
-    </footer>
+
+    <!-- VIBRATION BLOCK -->
+    <div class="vibration-bar" id="vibrationBlock">
+      <div class="vib-header">
+        <div class="vib-name" id="vibName">Enter name & birth date</div>
+        <div class="vib-badge" id="vibBadge">—</div>
+      </div>
+      <div class="vib-desc" id="vibDesc">Reveal your sacred name vibration by filling in the fields above.</div>
+      <div class="vib-progress"><div class="vib-progress-fill" id="vibProgress" style="width:0%"></div></div>
+      <div id="correctionBanner" class="correction-banner"></div>
+    </div>
+
+    <button class="cta-btn" id="revealBtn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+      Reveal Complete Oracle Profile
+    </button>
+  </div>
+
+  <!-- DETAIL CARD -->
+  <div class="card" id="detailCard" style="display:none;">
+    <div class="section-tabs">
+      <button class="stab active" data-tab="harmony">Harmony</button>
+      <button class="stab" data-tab="colours">Colours</button>
+      <button class="stab" data-tab="dress">Dress</button>
+      <button class="stab" data-tab="compat">Compatibility</button>
+      <button class="stab" data-tab="year">Personal Year</button>
+      <button class="stab" data-tab="bio">Biorhythm</button>
+    </div>
+
+    <!-- HARMONY TAB -->
+    <div class="tab-panel active" id="tab-harmony">
+      <div class="two-col">
+        <div class="harmony-panel friends">
+          <div class="panel-title">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M5 1C2.8 1 1 2.8 1 5s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm0 1.5A1.5 1.5 0 115 5a1.5 1.5 0 010-3z" opacity="0.5"/><circle cx="5" cy="5" r="2"/></svg>
+            Harmonic Numbers
+          </div>
+          <div class="number-bubbles" id="friendBubbles"></div>
+          <div class="panel-desc" id="friendsDesc"></div>
+        </div>
+        <div class="harmony-panel avoid">
+          <div class="panel-title">
+            <svg width="10" height="10" viewBox="0 0 10 10" fill="currentColor"><path d="M5 1C2.8 1 1 2.8 1 5s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zM2.8 7.2 7.2 2.8" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+            Mindful Awareness
+          </div>
+          <div class="number-bubbles" id="avoidBubbles"></div>
+          <div class="panel-desc" id="avoidDesc"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLOURS TAB -->
+    <div class="tab-panel" id="tab-colours">
+      <div class="colours-section">
+        <div class="sec-title">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c1.1 0 2-.9 2-2 0-.54-.2-1.03-.5-1.4-.29-.35-.49-.83-.49-1.3 0-1.1.9-2 2-2h2.36c3.11 0 5.63-2.52 5.63-5.63C23 6.17 18 2 12 2z"/></svg>
+          Aura Colours — Lucky Shades
+        </div>
+        <div class="colour-palette" id="colourPalette"></div>
+        <div class="divider"></div>
+        <div class="sec-title">Lucky Numbers</div>
+        <div class="lucky-pills" id="luckyPills"></div>
+      </div>
+    </div>
+
+    <!-- DRESS TAB -->
+    <div class="tab-panel" id="tab-dress">
+      <div class="dress-section">
+        <div class="sec-title">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L8 7H5l-3 4 3 4h3l4 7 4-7h3l3-4-3-4h-3l-4-5z"/></svg>
+          Dress Code Oracle
+        </div>
+        <div class="occasion-tabs">
+          <button class="occ-btn active" data-occ="daily">✦ Daily</button>
+          <button class="occ-btn" data-occ="date">♡ Date</button>
+          <button class="occ-btn" data-occ="meeting">◈ Meeting</button>
+          <button class="occ-btn" data-occ="party">❋ Party</button>
+          <button class="occ-btn" data-occ="spiritual">◉ Spiritual</button>
+          <button class="occ-btn" data-occ="interview">⬡ Interview</button>
+        </div>
+        <div class="dress-content">
+          <div class="dress-swatches" id="dressPalette"></div>
+          <div class="dress-advice" id="dressAdvice">Choose an occasion above</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COMPATIBILITY TAB -->
+    <div class="tab-panel" id="tab-compat">
+      <div class="compat-section">
+        <div class="sec-title">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.7l-1.45-1.32C5.4 15.36 2 12.27 2 8.5 2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.88L12 21.7z"/></svg>
+          Name Compatibility
+        </div>
+        <div class="compat-inputs">
+          <div class="field">
+            <label>Your Name</label>
+            <input type="text" id="compat1" placeholder="Your name" readonly style="cursor:default;background:#f9f5ee;">
+          </div>
+          <div class="field">
+            <label>Partner / Friend Name</label>
+            <input type="text" id="compat2" placeholder="Their name">
+          </div>
+          <button class="compat-btn" id="compatCalcBtn">Check ✦</button>
+        </div>
+        <div class="compat-result" id="compatResult">
+          <div class="compat-score-row">
+            <div class="compat-score" id="compatScore">—</div>
+            <div class="compat-bar-wrap">
+              <div class="compat-label" id="compatLabel">—</div>
+              <div class="compat-bar-track"><div class="compat-bar-fill" id="compatBar" style="width:0%"></div></div>
+            </div>
+          </div>
+          <div class="compat-note" id="compatNote"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PERSONAL YEAR TAB -->
+    <div class="tab-panel" id="tab-year">
+      <div class="year-section">
+        <div class="sec-title" style="color:#2a5080;">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11z"/></svg>
+          Personal Year Numbers (2020–2028)
+        </div>
+        <div class="year-grid" id="yearGrid"></div>
+        <div class="year-insight" id="yearInsight"></div>
+      </div>
+    </div>
+
+    <!-- BIORHYTHM TAB -->
+    <div class="tab-panel" id="tab-bio">
+      <div class="bio-section">
+        <div class="sec-title">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22,12 18,12 15,21 9,3 6,12 2,12"/></svg>
+          Today's Numerological Cycles
+        </div>
+        <div style="font-size:0.72rem;color:#9a8060;margin-bottom:1rem;">Based on your birth date and today's cosmic alignment</div>
+        <div class="bio-bars" id="bioBars"></div>
+        <div class="year-insight" id="bioInsight" style="margin-top:0.8rem;border-color:rgba(180,150,90,0.2);color:#4a3820;"></div>
+      </div>
+    </div>
+
+    <!-- share -->
+    <div class="share-row">
+      <button class="share-btn" id="copyBtn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+        Copy Profile
+      </button>
+      <button class="share-btn" id="printBtn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6,9 6,2 18,2 18,9"/><path d="M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+        Print / Save PDF
+      </button>
+    </div>
+  </div>
+
+  <footer>
+    ✦ Numeriscope — Ancient Chaldean &amp; Pythagorean Numerology ✦<br>
+    Root · Destiny · Name Compound · Harmony · Dress Code · Compatibility · Personal Year
+  </footer>
 </div>
 
 <script>
-    // --------------------------------------------------------------
-    // ENEMY NUMBERS (Numbers to avoid) - exact as user defined
-    // enemy for 1:3,9 ; 2:8 ; 3:1 ; 4:3,9 ; 5:none ; 6:none ; 7:9 ; 8:9,1 ; 9:4,7
-    // --------------------------------------------------------------
-    const enemyMap = {
-        1: [3, 9],
-        2: [8],
-        3: [1],
-        4: [3, 9],
-        5: [],
-        6: [],
-        7: [9],
-        8: [9, 1],
-        9: [4, 7]
-    };
+// ============================================================
+//  DATA
+// ============================================================
+const letterValues = new Map([
+  ['A',1],['I',1],['J',1],['Q',1],['Y',1],
+  ['B',2],['K',2],['R',2],
+  ['C',3],['G',3],['L',3],['S',3],
+  ['D',4],['M',4],['T',4],
+  ['E',5],['H',5],['N',5],['X',5],
+  ['U',6],['V',6],['W',6],
+  ['O',7],['Z',7],
+  ['F',8],['P',8]
+]);
 
-    // FRIENDSHIP MAP (positive connections)
-    const friendshipMap = {
-        1: [1, 2, 4, 7],
-        2: [1, 2, 7, 9],
-        3: [3, 6, 9],
-        4: [1, 2, 4, 7, 8],
-        5: [5, 6, 3, 9],
-        6: [6, 9, 3],
-        7: [2, 3, 6],
-        8: [8, 3, 6, 4],
-        9: [9, 6, 3]
-    };
+const friendMap = {1:[1,2,4,7],2:[1,2,7,9],3:[3,6,9],4:[1,2,4,7,8],5:[5,6,3,9],6:[6,9,3],7:[2,3,6],8:[8,3,6,4],9:[9,6,3]};
+const enemyMap = {1:[3,9],2:[8],3:[1],4:[3,9],5:[],6:[],7:[9],8:[9,1],9:[4,7]};
 
-    function getHarmoniousNumbers(root) {
-        return friendshipMap[root] || [root];
+const luckyColours = {
+  1:["Red","Orange","Gold"],2:["White","Silver","Orange"],3:["Yellow","Purple","Pink"],
+  4:["Blue","Grey"],5:["Green","Turquoise"],6:["White","Light Blue","Green"],
+  7:["Light Yellow","White","Green"],8:["Dark Blue","Black"],9:["Red","Maroon","Rose"]
+};
+
+const colourHex = {
+  "Red":"#e05a40","Orange":"#f0963a","Gold":"#d4a830","White":"#f5f0e8","Silver":"#c0c0cc",
+  "Yellow":"#f0d030","Purple":"#9060c0","Pink":"#e890b0","Blue":"#4878c0","Grey":"#909090",
+  "Green":"#5a9858","Turquoise":"#38a898","Light Blue":"#80b8e8","Dark Blue":"#203858",
+  "Black":"#282828","Maroon":"#883030","Rose":"#f0b0c8","Light Yellow":"#f8e878"
+};
+
+const rootTags = {
+  1:"The Leader",2:"The Diplomat",3:"The Creator",4:"The Builder",
+  5:"The Explorer",6:"The Nurturer",7:"The Seeker",8:"The Achiever",9:"The Humanitarian"
+};
+
+const destinyTags = {
+  1:"Independence Path",2:"Partnership Path",3:"Expression Path",4:"Stability Path",
+  5:"Freedom Path",6:"Responsibility Path",7:"Wisdom Path",8:"Power Path",9:"Completion Path"
+};
+
+const compoundMeanings = {
+  10:"Wheel of Fortune — fame through initiative and hard work.",
+  11:"A hungry lion bound — difficult karmic lessons, but immense inner growth.",
+  12:"Self-sacrifice and wisdom; giving leads to profound transformation.",
+  13:"Extremity energy — dynamic rise or dramatic fall; karmic rebirth.",
+  14:"Storm energy: very lucky for change, travel, and adventure.",
+  15:"The Magician — mystic luck, charisma, and magnetic attraction.",
+  16:"The Fallen Tower — unexpected reversals; major life learning curve.",
+  17:"The Immortal Star — very auspicious for fame, legacy, and recognition.",
+  18:"The Moon — deep family bonds and emotional depth, but hidden adversaries.",
+  19:"The Sun — radiant success, happiness, and bright beginnings.",
+  20:"The Angel's Trumpet — justice dawns, new chapters open beautifully.",
+  21:"The World — prosperity and success after meaningful struggle.",
+  22:"Blindness through pride — caution around ego-driven decisions.",
+  23:"The Royal Star — very lucky; blessed by higher forces.",
+  24:"Success in love and social bonds; harmony and affection reign.",
+  25:"Through struggle comes ultimate success and resilience.",
+  26:"Future problems foreshadowed — requires mindful financial and karmic planning.",
+  27:"The Sceptre — natural leadership, authority, and long-lasting influence.",
+  28:"Opposition and legal caution; partnerships need careful evaluation.",
+  29:"Uncertainty and possible betrayal — cultivate discernment in trust.",
+  30:"Neutral intellectual energy; ideas flow but need grounding.",
+  31:"The Hermit path — solitude leads to profound inner wisdom.",
+  32:"Very lucky — fame, creativity, and joyful recognition await.",
+  33:"Love and spiritual success; compassion amplified to its highest.",
+  34:"Struggle precedes prosperity; endurance is rewarded handsomely.",
+  35:"Defamation warning — protect your reputation with conscious choices.",
+  36:"Leadership power through wisdom; respected authority and influence.",
+  37:"Unity and fame; harmonious partnerships lead to great achievement.",
+  38:"Tension from close relationships; discernment in inner circle is key.",
+  39:"Neutral intellectual path; clarity comes through patient observation.",
+  40:"Solitude and depth; alone time fuels genius and spiritual insight.",
+  41:"Fame, intuition, and inspired leadership; inner voice guides perfectly.",
+  42:"Love and partnership triumph; soul-level connections are blessed.",
+  43:"Struggle and rivalry; persistence overcomes obstacles completely.",
+  44:"Future planning essential; methodical work builds lasting empire.",
+  45:"The Sceptre reborn — power, wisdom, and earned spiritual authority.",
+  46:"Unity and fame; collective endeavors bring outstanding recognition.",
+  47:"Possible betrayal — guard your trust; appearances can deceive.",
+  48:"Neutral clarity; objective thinking brings surprising breakthroughs.",
+  49:"Solitude and wisdom; deep introspection yields lasting insight.",
+  50:"Very lucky — blessed with abundant good fortune and ease.",
+  51:"Warrior's victory — strength of character conquers all adversity.",
+  52:"Struggle and obstacles; inner fortitude is your greatest asset.",
+  53:"Intelligent and lucky; quick mind attracts remarkable opportunities.",
+  54:"Success and prosperity through consistent, dedicated effort.",
+  55:"Hasty decisions may backfire — slow down and reflect carefully.",
+  56:"Effort-driven success; results come proportional to your dedication.",
+  57:"Lucky in business and commerce; entrepreneurial spirit flourishes.",
+  58:"Emotional depth; sensitivity becomes your greatest superpower.",
+  59:"Travel and movement bring wonderful unexpected benefits.",
+  60:"Attitude shift required; perspective change unlocks new doors.",
+  61:"Early difficulty melts into lasting later-life success and joy.",
+  62:"Hardworking nature leads to sudden powerful rise in fortune.",
+  63:"Lucky and helpful; your generosity returns as abundant blessings.",
+  64:"Family tension but strong financial luck; home and wealth balance.",
+  65:"Wealth and material success, but caution around physical safety.",
+  66:"Magnetic success — effortless attraction of people and resources.",
+  67:"Later success blooms beautifully; patience is richly rewarded.",
+  68:"Depression and lack of energetic support — a name correction is strongly advised.",
+  69:"Lucky and blessed marriage; love and prosperity intertwine.",
+  70:"Luxurious, comfortable life; beauty and refinement surround you.",
+  71:"Emotional advisor and wise counselor; deep empathy is your gift.",
+  72:"Childhood hardship shapes resilience — name correction suggested for smoother flow.",
+  73:"Prosperous and spiritually devoted; abundance flows from faith.",
+  74:"Patient alert — slow and steady wins; avoid rushing important matters.",
+  75:"Health awareness and possible betrayal — nurture body and trust wisely.",
+  76:"Total success across all domains; a truly blessed compound.",
+  77:"Significant obstacles cluster — a name correction is recommended.",
+  78:"Constant tension and resistance — numerological alignment is advised.",
+  79:"Great success but accident-prone; travel and physical safety conscious.",
+  80:"Lucky, religious, and deeply blessed by cosmic forces."
+};
+
+const negativeCompounds = new Set([11,12,16,18,22,26,28,29,31,35,38,40,43,44,47,52,55,56,59,64,68,72,75,77,78]);
+
+const personalYearThemes = {
+  1:"New beginnings, leadership, fresh starts — plant seeds boldly.",
+  2:"Partnership, patience, cooperation — relationships deepen and flourish.",
+  3:"Creativity, expression, social expansion — your voice is amplified.",
+  4:"Work, foundations, discipline — build what lasts with steady effort.",
+  5:"Change, freedom, adventure — embrace movement and transformation.",
+  6:"Responsibility, family, beauty — nurture home and loved ones.",
+  7:"Reflection, spirituality, study — inner wisdom calls for solitude.",
+  8:"Power, achievement, finance — manifest material goals with force.",
+  9:"Completion, release, endings — let go gracefully for new cycles."
+};
+
+const compatMessages = {
+  excellent: "Celestial harmony — your vibrations align at the deepest soul level. Effortless understanding, shared values, and magnetic connection define this bond.",
+  good: "Positive resonance — your energies complement each other well. Some beautiful synergies with room to grow through mutual understanding.",
+  neutral: "Balanced dynamic — neither powerfully aligned nor in conflict. With conscious effort and open communication, this relationship can flourish.",
+  challenging: "Growth catalyst — different vibrations create friction that, when embraced, becomes a profound teacher. Requires patience and conscious work.",
+  difficult: "Karmic tension — significant vibrational differences challenge harmony. Deep awareness and spiritual maturity are needed to navigate this bond."
+};
+
+const bioLabels = [
+  {name:"Physical", period:23, color:"#c84030"},
+  {name:"Emotional", period:28, color:"#6090d0"},
+  {name:"Intellectual", period:33, color:"#50a060"},
+  {name:"Intuition", period:38, color:"#9060c0"}
+];
+
+// ============================================================
+//  CORE CALCULATIONS
+// ============================================================
+function reduceSingle(n) {
+  while (n > 9) { let s=0,t=n; while(t>0){s+=t%10;t=Math.floor(t/10);} n=s; }
+  return n;
+}
+
+function reduceCompound(n) {
+  if (n>=10&&n<=80) return n;
+  while (n>80||n<10) {
+    let s=0,t=n; while(t>0){s+=t%10;t=Math.floor(t/10);} n=s;
+    if(n>=10&&n<=80) break;
+    if(n>=1&&n<=9) return n;
+  }
+  return n;
+}
+
+function nameSum(name) {
+  const s = name.toUpperCase().replace(/[^A-Z]/g,'');
+  let sum=0; for(let c of s) if(letterValues.has(c)) sum+=letterValues.get(c);
+  return sum;
+}
+
+function rootFromDate(dob) {
+  if(!dob) return null;
+  const d=new Date(dob); if(isNaN(d)) return null;
+  return reduceSingle(d.getDate());
+}
+
+function destinyFromDate(dob) {
+  if(!dob) return null;
+  const d=new Date(dob); if(isNaN(d)) return null;
+  const day=d.getDate(), mon=d.getMonth()+1, yr=d.getFullYear();
+  let sum=0, n=day+mon+yr;
+  while(n>9){let s=0,t=n;while(t>0){s+=t%10;t=Math.floor(t/10);}n=s;}
+  return n;
+}
+
+function personalYear(dob, year) {
+  if(!dob) return null;
+  const d=new Date(dob); if(isNaN(d)) return null;
+  const day=d.getDate(), mon=d.getMonth()+1;
+  return reduceSingle(day+mon+year);
+}
+
+function getBiorhythm(dob, cycleLen) {
+  if(!dob) return 50;
+  const d = new Date(dob);
+  const now = new Date();
+  const days = Math.floor((now-d)/(1000*60*60*24));
+  const val = Math.sin(2*Math.PI*days/cycleLen);
+  return Math.round((val+1)*50);
+}
+
+function getCompatScore(name1, name2) {
+  if(!name1||!name2) return null;
+  const s1=reduceCompound(nameSum(name1)), s2=reduceCompound(nameSum(name2));
+  const r1=reduceSingle(s1), r2=reduceSingle(s2);
+  const friends1=friendMap[r1]||[], enemies1=enemyMap[r1]||[];
+  const friends2=friendMap[r2]||[], enemies2=enemyMap[r2]||[];
+  let score=50;
+  if(friends1.includes(r2)) score+=20;
+  if(friends2.includes(r1)) score+=10;
+  if(enemies1.includes(r2)) score-=25;
+  if(enemies2.includes(r1)) score-=15;
+  if(r1===r2) score+=15;
+  score = Math.max(5,Math.min(100,score));
+  return score;
+}
+
+// ============================================================
+//  STATE
+// ============================================================
+let currentProfile = null;
+let currentOccasion = 'daily';
+
+// ============================================================
+//  RENDER
+// ============================================================
+function popAnimate(el) {
+  el.classList.remove('pop');
+  void el.offsetWidth;
+  el.classList.add('pop');
+}
+
+function renderMain() {
+  const name = document.getElementById('fullName').value.trim();
+  const dob = document.getElementById('dob').value;
+
+  if (!name || !dob) {
+    document.getElementById('rootVal').textContent = '--';
+    document.getElementById('destinyVal').textContent = '--';
+    document.getElementById('compoundVal').textContent = '--';
+    document.getElementById('rootTag').textContent = '—';
+    document.getElementById('destinyTag').textContent = '—';
+    document.getElementById('compoundTag').textContent = '—';
+    document.getElementById('vibName').textContent = 'Enter name & birth date';
+    document.getElementById('vibDesc').textContent = 'Reveal your sacred name vibration by filling in the fields above.';
+    document.getElementById('vibBadge').textContent = '—';
+    document.getElementById('vibBadge').className = 'vib-badge';
+    document.getElementById('vibProgress').style.width = '0%';
+    document.getElementById('correctionBanner').style.display = 'none';
+    currentProfile = null;
+    return;
+  }
+
+  const raw = nameSum(name);
+  if(!raw) return;
+  const compound = reduceCompound(raw);
+  const root = rootFromDate(dob);
+  const destiny = destinyFromDate(dob);
+  if(!root||!destiny) return;
+
+  currentProfile = { name, dob, raw, compound, root, destiny, firstName: name.trim().split(' ')[0] };
+
+  const rv = document.getElementById('rootVal');
+  const dv = document.getElementById('destinyVal');
+  const cv = document.getElementById('compoundVal');
+
+  rv.textContent = root; popAnimate(rv);
+  dv.textContent = destiny; popAnimate(dv);
+  cv.textContent = compound; popAnimate(cv);
+
+  document.getElementById('rootTag').textContent = rootTags[root]||'';
+  document.getElementById('destinyTag').textContent = destinyTags[destiny]||'';
+  document.getElementById('compoundTag').textContent = raw!==compound ? `Raw: ${raw} → ${compound}` : `Compound ${compound}`;
+
+  document.getElementById('vibName').textContent = `${currentProfile.firstName} · Name Vibration ${compound}`;
+
+  const isNeg = negativeCompounds.has(compound);
+  const badge = document.getElementById('vibBadge');
+  badge.textContent = isNeg ? 'Correction Advised' : 'Auspicious';
+  badge.className = 'vib-badge' + (isNeg ? ' neg' : '');
+
+  document.getElementById('vibDesc').textContent = compoundMeanings[compound] || `${compound}: sacred compound vibration energy.`;
+  document.getElementById('vibProgress').style.width = ((compound/80)*100)+'%';
+
+  const banner = document.getElementById('correctionBanner');
+  if(isNeg) {
+    banner.style.display = 'block';
+    banner.innerHTML = `⚠ Name vibration <strong>${compound}</strong> carries challenging frequencies. A numerological name correction by an expert practitioner is recommended to realign your energetic flow toward greater harmony, success, and ease.`;
+  } else {
+    banner.style.display = 'none';
+  }
+
+  document.getElementById('compat1').value = name;
+}
+
+function renderDetail() {
+  if(!currentProfile) return;
+  const { root, dob, compound } = currentProfile;
+
+  // harmony
+  const friends = (friendMap[root]||[]).filter((v,i,a)=>a.indexOf(v)===i);
+  const enemies = enemyMap[root]||[];
+
+  const fb = document.getElementById('friendBubbles');
+  fb.innerHTML = friends.map(n=>`<div class="num-bubble">${n}</div>`).join('');
+  document.getElementById('friendsDesc').textContent = friends.length>1
+    ? `Your root ${root} (${rootTags[root]}) flows naturally with numbers ${friends.filter(n=>n!==root).join(', ')}. These vibrations attract support, understanding, and fortunate connections into your life.`
+    : `Your root ${root} carries sovereign self-aligned energy.`;
+
+  const ab = document.getElementById('avoidBubbles');
+  ab.innerHTML = enemies.length
+    ? enemies.map(n=>`<div class="num-bubble">${n}</div>`).join('')
+    : `<div class="panel-desc" style="font-style:italic;color:#6a9058;">No challenging numbers — you flow gracefully with all vibrations ✦</div>`;
+  document.getElementById('avoidDesc').textContent = enemies.length
+    ? `Bring mindful awareness around numbers ${enemies.join(', ')}. With consciousness and intention, any energetic dynamic can be navigated with grace.`
+    : '';
+
+  // colours
+  const colours = luckyColours[root]||['Gold'];
+  document.getElementById('colourPalette').innerHTML = colours.map(c=>`<div class="colour-chip"><div class="colour-swatch" style="background:${colourHex[c]||'#c0a060'}"></div><span>${c}</span></div>`).join('');
+  const luckyNums = (friendMap[root]||[root]).filter((v,i,a)=>a.indexOf(v)===i);
+  document.getElementById('luckyPills').innerHTML = luckyNums.map(n=>`<span class="lucky-pill">${n}</span>`).join('');
+
+  // dress (initial render)
+  renderDress();
+
+  // personal year
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  const yearGrid = document.getElementById('yearGrid');
+  const years = [2020,2021,2022,2023,2024,2025,2026,2027,2028];
+  yearGrid.innerHTML = years.map(y=>{
+    const py = personalYear(dob, y);
+    const isCurrent = y===currentYear;
+    return `<div class="year-chip${isCurrent?' current':''}">
+      <div class="year-chip-yr">${y}</div>
+      <div class="year-chip-num">${py}</div>
+      <div class="year-chip-label">${(personalYearThemes[py]||'').split('—')[0].trim()}</div>
+    </div>`;
+  }).join('');
+
+  const thisYear = personalYear(dob, currentYear);
+  document.getElementById('yearInsight').innerHTML = `<strong>Your ${currentYear} Personal Year: ${thisYear}</strong> — ${personalYearThemes[thisYear]||'A year of growth and alignment.'}`;
+
+  // biorhythm
+  const bioBars = document.getElementById('bioBars');
+  bioBars.innerHTML = bioLabels.map(b=>{
+    const pct = getBiorhythm(dob, b.period);
+    return `<div class="bio-row">
+      <div class="bio-label">${b.name}</div>
+      <div class="bio-track"><div class="bio-fill" style="width:${pct}%;background:${b.color};"></div></div>
+      <div class="bio-percent">${pct}%</div>
+    </div>`;
+  }).join('');
+
+  const physPct = getBiorhythm(dob, 23);
+  const emotPct = getBiorhythm(dob, 28);
+  const intellPct = getBiorhythm(dob, 33);
+  let insight = '';
+  if(physPct>70) insight += 'Your physical energy is <strong>high</strong> — excellent for action and exercise. ';
+  else if(physPct<30) insight += 'Physical energy is <strong>low</strong> — rest and recovery are favored today. ';
+  if(emotPct>70) insight += 'Emotionally you are <strong>expansive</strong> — ideal for heartfelt conversations. ';
+  else if(emotPct<30) insight += 'Emotional sensitivity is <strong>heightened</strong> — be gentle with yourself. ';
+  if(intellPct>70) insight += 'Mental clarity is <strong>sharp</strong> — perfect for study and creative work.';
+  else if(intellPct<30) insight += 'Mental energy is <strong>quiet</strong> — trust intuition over logic today.';
+  document.getElementById('bioInsight').innerHTML = insight || 'Your cycles are in a transitional phase — balance and steady awareness serve you best today.';
+}
+
+function renderDress() {
+  if(!currentProfile) return;
+  const colours = luckyColours[currentProfile.root]||['Gold'];
+  const occ = currentOccasion;
+
+  const dressMap = {
+    daily: {
+      cols: [colours[0], colours[1]||colours[0]],
+      advice: `Channel your natural aura with ${colours[0]} tones. Even a small ${colours[0].toLowerCase()} accent — scarf, bag, or jewelry — harmonizes your daily energy field and attracts aligned opportunities.`
+    },
+    date: {
+      cols: [colours[0], colours[2]||colours[1]||colours[0]],
+      advice: `Ignite romantic magnetism with ${colours[0]} as your primary shade. ${colours[0]} fabric against your skin activates your love vibration, drawing genuine connection and warmth.`
+    },
+    meeting: {
+      cols: [colours[0], colours[1]||colours[0]],
+      advice: `Project authority and credibility with ${colours[0]} — a blazer or statement piece in this shade commands natural respect. ${colours[1] ? `Pair with ${colours[1]} for approachability.` : ''}`
+    },
+    party: {
+      cols: colours.slice(0,3),
+      advice: `Radiate magnetic joy with bold ${colours[0]}. Layer ${colours.slice(1).join(' and ')||colours[0]} as accents for maximum festive energy. You will naturally become the room's brightest presence.`
+    },
+    spiritual: {
+      cols: [colours.find(c=>!['Black','Dark Blue'].includes(c))||colours[0], 'White'],
+      advice: `Elevate meditation and ritual practice with soft, light fabrics in ${colours.find(c=>!['Black','Dark Blue'].includes(c))||colours[0]}. Natural fibers like cotton or linen amplify spiritual receptivity. Keep jewelry minimal and meaningful.`
+    },
+    interview: {
+      cols: [colours[0], colours[1]||colours[0]],
+      advice: `Make a powerful first impression with ${colours[0]} as your power anchor. This shade activates confidence from within — choose well-fitted, polished attire and carry yourself as the number ${currentProfile.root} archetype: ${rootTags[currentProfile.root]}.`
     }
+  };
 
-    function getNumbersToAvoid(root) {
-        return enemyMap[root] || [];
-    }
+  const data = dressMap[occ]||dressMap.daily;
+  document.getElementById('dressPalette').innerHTML = data.cols.filter(Boolean).map(c=>`<div class="dress-chip"><div class="dress-swatch" style="background:${colourHex[c]||'#c0a060'}"></div><span>${c}</span></div>`).join('');
+  document.getElementById('dressAdvice').textContent = data.advice;
+}
 
-    // positive friendship message
-    function getFriendsMessage(root) {
-        const friends = getHarmoniousNumbers(root);
-        const unique = [...new Set(friends)].sort((a,b)=>a-b);
-        const others = unique.filter(n => n !== root);
-        if (others.length === 0) return `✨ Root ${root} carries sovereign energy — you naturally align with your own path.`;
-        return `🌸 Your root number ${root} shares natural harmony with numbers ${others.join(', ')}. These vibrations attract support, understanding, and fortunate connections.`;
-    }
+// ============================================================
+//  COMPATIBILITY
+// ============================================================
+function renderCompat() {
+  const n1 = document.getElementById('compat1').value.trim();
+  const n2 = document.getElementById('compat2').value.trim();
+  if(!n1||!n2) return;
 
-    // gentle avoid message
-    function getAvoidMessage(root) {
-        const avoidList = getNumbersToAvoid(root);
-        if (avoidList.length === 0) return `🍃 Root ${root} has no challenging number relationships. You flow gracefully with all energies.`;
-        return `🌙 For smoother alignment, bring mindful awareness around numbers ${avoidList.join(', ')}. With consciousness, any dynamic can be navigated with grace.`;
-    }
+  const score = getCompatScore(n1, n2);
+  const result = document.getElementById('compatResult');
+  result.style.display = 'block';
 
-    // --------------------------------------------------------------
-    // NUMEROLOGY CORE
-    // --------------------------------------------------------------
-    const letterValues = new Map([
-        ['A',1], ['I',1], ['J',1], ['Q',1], ['Y',1],
-        ['B',2], ['K',2], ['R',2],
-        ['C',3], ['G',3], ['L',3], ['S',3],
-        ['D',4], ['M',4], ['T',4],
-        ['E',5], ['H',5], ['N',5], ['X',5],
-        ['U',6], ['V',6], ['W',6],
-        ['O',7], ['Z',7],
-        ['F',8], ['P',8]
-    ]);
+  document.getElementById('compatScore').textContent = score+'%';
+  document.getElementById('compatBar').style.width = score+'%';
 
-    function reduceToSingleDigit(num) {
-        if (num === 0) return 0;
-        while (num > 9) {
-            let s = 0, t = num;
-            while (t > 0) { s += t % 10; t = Math.floor(t/10); }
-            num = s;
-        }
-        return num;
-    }
+  let label, note;
+  if(score>=80){label='Celestial Harmony';note=compatMessages.excellent;}
+  else if(score>=65){label='Positive Resonance';note=compatMessages.good;}
+  else if(score>=50){label='Balanced Dynamic';note=compatMessages.neutral;}
+  else if(score>=35){label='Growth Catalyst';note=compatMessages.challenging;}
+  else{label='Karmic Tension';note=compatMessages.difficult;}
 
-    function reduceToCompoundRange(rawSum) {
-        if (rawSum >= 10 && rawSum <= 80) return rawSum;
-        let current = rawSum;
-        while (current > 80 || current < 10) {
-            let digitSum = 0, t = current;
-            while (t > 0) { digitSum += t % 10; t = Math.floor(t/10); }
-            current = digitSum;
-            if (current >= 10 && current <= 80) break;
-            if (current >= 1 && current <= 9) return current;
-        }
-        return current;
-    }
+  document.getElementById('compatLabel').textContent = label;
+  document.getElementById('compatNote').textContent = note;
 
-    function getRawNameSum(fullName) {
-        if (!fullName) return 0;
-        const clean = fullName.toUpperCase().replace(/[^A-Z]/g, '');
-        let sum = 0;
-        for (let ch of clean) if (letterValues.has(ch)) sum += letterValues.get(ch);
-        return sum;
-    }
+  const r1=reduceSingle(reduceCompound(nameSum(n1)));
+  const r2=reduceSingle(reduceCompound(nameSum(n2)));
+  document.getElementById('compatNote').textContent += ` (${n1.split(' ')[0]} vibration: ${r1} · ${n2.split(' ')[0]} vibration: ${r2})`;
+}
 
-    function getRootNumberFromDate(dobStr) {
-        if (!dobStr) return null;
-        const date = new Date(dobStr);
-        if (isNaN(date.getTime())) return null;
-        return reduceToSingleDigit(date.getDate());
-    }
+// ============================================================
+//  SHARE
+// ============================================================
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2500);
+}
 
-    function getDestinyNumber(dobStr) {
-        if (!dobStr) return null;
-        const date = new Date(dobStr);
-        if (isNaN(date.getTime())) return null;
-        const day = date.getDate(), month = date.getMonth()+1, year = date.getFullYear();
-        return reduceToSingleDigit(day + month + year);
-    }
+function copyProfile() {
+  if(!currentProfile) { showToast('Enter your details first'); return; }
+  const { name, root, destiny, compound } = currentProfile;
+  const colours = luckyColours[root]||['Gold'];
+  const friends = (friendMap[root]||[]).filter((v,i,a)=>a.indexOf(v)===i);
+  const text = [
+    `✦ NUMERISCOPE ORACLE PROFILE ✦`,
+    `Name: ${name}`,
+    `Root Number: ${root} (${rootTags[root]})`,
+    `Destiny Number: ${destiny} (${destinyTags[destiny]})`,
+    `Name Vibration: ${compound} — ${(compoundMeanings[compound]||'').split('—')[0].trim()}`,
+    `Lucky Colours: ${colours.join(', ')}`,
+    `Harmonic Numbers: ${friends.join(', ')}`,
+    ``,
+    `Generated by Numeriscope`
+  ].join('\n');
+  navigator.clipboard.writeText(text).then(()=>showToast('Profile copied ✦')).catch(()=>showToast('Copy failed'));
+}
 
-    function getNumerologyProfile(fullName, dobStr) {
-        if (!fullName || !dobStr) return null;
-        const rawSum = getRawNameSum(fullName);
-        if (rawSum === 0) return null;
-        const compound = reduceToCompoundRange(rawSum);
-        const root = getRootNumberFromDate(dobStr);
-        const destiny = getDestinyNumber(dobStr);
-        if (root === null || destiny === null) return null;
-        return { rawSum, compound, root, destiny, firstName: fullName.trim().split(' ')[0] || "Soul" };
-    }
+// ============================================================
+//  TABS
+// ============================================================
+document.querySelectorAll('.stab').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.stab').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    const tab = btn.dataset.tab;
+    document.getElementById('tab-'+tab).classList.add('active');
+  });
+});
 
-    // ---------- LUCKY COLOURS & NUMBERS ----------
-    const luckyColoursMap = {
-        1: ["Red", "Orange", "Gold"], 2: ["White", "Silver", "Orange"], 3: ["Yellow", "Purple", "Pink"],
-        4: ["Blue", "Grey"], 5: ["Green", "Turquoise"], 6: ["White", "Light Blue", "Green"],
-        7: ["Light Yellow", "White", "Green"], 8: ["Dark Blue", "Black"], 9: ["Red", "Maroon", "Rose"]
-    };
-    const colourHex = {
-        "Red":"#e66151","Orange":"#ffaa5e","Gold":"#e4ba48","White":"#f8f6f0","Silver":"#ccccd9",
-        "Yellow":"#ffdd77","Purple":"#b77ee0","Pink":"#f7b2c2","Blue":"#6290c4","Grey":"#afb8c2",
-        "Green":"#73b06f","Turquoise":"#56c0b0","Light Blue":"#a6ceff","Dark Blue":"#2c4763","Black":"#2a2a2a",
-        "Maroon":"#b54646","Rose":"#ffc0db","Light Yellow":"#fff0b3"
-    };
+document.querySelectorAll('.occ-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.occ-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    currentOccasion = btn.dataset.occ;
+    renderDress();
+  });
+});
 
-    function getLuckyNumbersArray(root) {
-        const mapping = { 1:[1,2,4,7], 2:[1,2, 7,9], 3:[3,6,9], 4:[1,2,4,7,8], 5:[5,6, 3, 9], 6:[6,9,3], 7:[2,3,6], 8:[8, 3,6, 4], 9:[9,6,3] };
-        return mapping[root] || [root];
-    }
+// ============================================================
+//  EVENT LISTENERS
+// ============================================================
+document.getElementById('revealBtn').addEventListener('click', ()=>{
+  renderMain();
+  if(currentProfile) {
+    const dc = document.getElementById('detailCard');
+    dc.style.display = 'block';
+    renderDetail();
+    dc.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+});
 
-    // ---------- COMPOUND MEANINGS & NEGATIVE CHECK ----------
-    const compoundMeanings = {
-        10:"Wheel of Fortune — fame, effort-based success.", 11:"A hungry lion bound — difficult lessons, inner growth.", 12:"Self-sacrifice, wisdom.", 13:"Extremity: dynamic rise or fall.",
-        14:"Storm energy, lucky for change.", 15:"Magic & mystic, impulsive luck.", 16:"Fallen tower — learning curve.", 17:"Immortal star, very lucky.", 18:"Moon — family depth, enemies.", 19:"Sun — happiness, success.",
-        20:"Angel's trumpet: justice, new paths.", 21:"The World: prosperity after struggle.", 22:"Blindness from errors — caution.", 23:"Royal star, very lucky.", 24:"Success in love.", 25:"Struggle to success.",
-        26:"Future problems warning.", 27:"The Sceptre, leadership.", 28:"Opposition, legal caution.", 29:"Uncertainty, betrayal possible.", 30:"Neutral intellectual.", 31:"Solitude, inner path.", 32:"Very lucky, fame.", 33:"Love success.",
-        34:"Struggle then prosperity.", 35:"Defamation warning.", 36:"Leadership power.", 37:"Unity & fame.", 38:"Tension from close ones.", 39:"Neutral intellect.", 40:"Solitude depth.", 41:"Fame & intuition.",
-        42:"Love & partnership.", 43:"Struggle, rivalry.", 44:"Future planning needed.", 45:"Sceptre power.", 46:"Unity & fame.", 47:"Betrayal possible.", 48:"Neutral clarity.", 49:"Solitude wisdom.", 50:"Very lucky.",
-        51:"Warrior victory, strength.", 52:"Struggle, obstacles.", 53:"Intelligent, lucky.", 54:"Success, prosperity.", 55:"Hasty decisions — rethink.", 56:"Effort-driven success.", 57:"Lucky business.", 58:"Emotional depth.",
-        59:"Travel benefits.", 60:"Attitude shift.", 61:"Early difficulty, later success.", 62:"Hardworking, sudden rise.", 63:"Lucky, helpful.", 64:"Family tension, financial luck.", 65:"Wealth, accident prone.",
-        66:"Magnetic success.", 67:"Later success.", 68:"Depression, lack of support — name correction advised.", 69:"Lucky, blessed marriage.", 70:"Luxurious life.", 71:"Emotional advisor.", 72:"Childhood hardship — change name suggested.",
-        73:"Prosperous, religious.", 74:"Patient alert.", 75:"Health problems, betrayal.", 76:"Total success.", 77:"Obstacles — name correction recommended.", 78:"Constant tension, failure.", 79:"Success, accident prone.", 80:"Lucky & religious."
-    };
+document.getElementById('fullName').addEventListener('input', renderMain);
+document.getElementById('dob').addEventListener('change', ()=>{
+  renderMain();
+  if(currentProfile && document.getElementById('detailCard').style.display!=='none') renderDetail();
+});
 
-    const negativeCompounds = new Set([11,12,16,18,22,26,28,29,31,35,38,40,43,44,47,52,56,59,64,68,72,75,77,78]);
+document.getElementById('compatCalcBtn').addEventListener('click', renderCompat);
+document.getElementById('compat2').addEventListener('keydown', e=>{ if(e.key==='Enter') renderCompat(); });
 
-    function getCompoundDescription(c) { return compoundMeanings[c] || `${c}: sacred compound vibration.`; }
-    function isNegativeCompound(c) { return negativeCompounds.has(c); }
+document.getElementById('copyBtn').addEventListener('click', copyProfile);
+document.getElementById('printBtn').addEventListener('click', ()=>window.print());
 
-    // dress oracle
-    let currentOccasion = "daily";
-    function getDressRecommendation(auraColors, occasion) {
-        const primary = auraColors[0] || "Gold";
-        const secondary = auraColors[1] || primary;
-        const tertiary = auraColors[2] || secondary;
-        const tips = {
-            daily: `Embrace your natural aura with ${primary} accents. A ${primary.toLowerCase()} accessory or top harmonizes daily energy.`,
-            date: `Ignite romance: wear ${primary} or ${secondary} shades. ${primary} dress or ${secondary} jewelry attracts loving vibrations.`,
-            meeting: `Command confidence: ${primary} and ${secondary} tones project authority. A blazer in ${primary} recommended.`,
-            party: `Celebrate with radiance: ${primary}, ${tertiary} bring magnetic joy. Bold ${primary} outfit shines.`,
-            spiritual: `Elevate meditation: wear ${primary === "White" ? "White or Silver" : primary} and soft ${secondary}. Light fabrics enhance intuition.`
-        };
-        let tip = tips[occasion] || tips.daily;
-        let recColours = [primary];
-        if (secondary && secondary !== primary) recColours.push(secondary);
-        if (occasion === "party" && tertiary && !recColours.includes(tertiary)) recColours.push(tertiary);
-        if (occasion === "spiritual") recColours = recColours.filter(c => c !== "Black" && c !== "Dark Blue");
-        return { colours: recColours.slice(0,3), advice: tip };
-    }
-
-    function renderUI(profile) {
-        if (!profile) {
-            document.getElementById('rootValue').innerText = '--'; document.getElementById('destinyValue').innerText = '--';
-            document.getElementById('compoundValue').innerText = '--'; document.getElementById('compoundDisplayName').innerHTML = '—';
-            document.getElementById('vibrationDesc').innerHTML = 'Enter valid name & date.';
-            document.getElementById('correctionNotice').style.display = 'none';
-            document.getElementById('friendsBanner').style.display = 'none';
-            document.getElementById('avoidBanner').style.display = 'none';
-            document.getElementById('colourPalette').innerHTML = ''; document.getElementById('luckyNumbersList').innerHTML = '';
-            return;
-        }
-        const { root, destiny, compound, rawSum, firstName } = profile;
-        document.getElementById('rootValue').innerText = root;
-        document.getElementById('destinyValue').innerText = destiny;
-        const rawNote = (rawSum !== compound) ? ` (${rawSum}→${compound})` : '';
-        document.getElementById('compoundValue').innerHTML = `${compound}${rawNote}`;
-        document.getElementById('compoundDisplayName').innerHTML = `${firstName} · Name Vibration ${compound}`;
-        document.getElementById('vibrationDesc').innerHTML = getCompoundDescription(compound);
-        
-        const isNeg = isNegativeCompound(compound);
-        const correctionDiv = document.getElementById('correctionNotice');
-        if (isNeg) {
-            correctionDiv.style.display = 'flex';
-            document.getElementById('correctionText').innerHTML = `⚠️ Name vibration ${compound} carries challenging frequencies. A numerological name correction (by an expert) is strongly recommended to align your energy for greater harmony, success, and ease.`;
-        } else {
-            correctionDiv.style.display = 'none';
-        }
-
-        // friends & avoid banners
-        document.getElementById('friendsBanner').style.display = 'flex';
-        document.getElementById('friendsMessage').innerHTML = getFriendsMessage(root);
-        document.getElementById('avoidBanner').style.display = 'flex';
-        document.getElementById('avoidMessage').innerHTML = getAvoidMessage(root);
-
-        // lucky colours
-        const colours = luckyColoursMap[root] || ["Gold"];
-        const colourContainer = document.getElementById('colourPalette');
-        colourContainer.innerHTML = colours.map(c => `<div class="colour-chip"><div class="colour-dot" style="background:${colourHex[c]||'#cfb797'}"></div><span class="chip-label">${c}</span></div>`).join('');
-        
-        const luckyNums = getLuckyNumbersArray(root);
-        const luckyContainer = document.getElementById('luckyNumbersList');
-        luckyContainer.innerHTML = luckyNums.map(n => `<span class="number-pill">${n}</span>`).join('');
-
-        // dress
-        updateDress(root);
-    }
-
-    function updateDress(root) {
-        const aura = luckyColoursMap[root] || ["Gold"];
-        const { colours, advice } = getDressRecommendation(aura, currentOccasion);
-        const dressContainer = document.getElementById('dressColoursList');
-        dressContainer.innerHTML = colours.map(c => `<div class="dress-swatch"><div class="swatch-rect" style="background:${colourHex[c]||'#cbb986'}"></div><span style="font-size:0.6rem;">${c}</span></div>`).join('');
-        document.getElementById('dressAdviceText').innerHTML = `<i class="fas fa-feather"></i> ${advice}`;
-    }
-
-    function onUpdate() {
-        const name = document.getElementById('fullName').value.trim();
-        const dob = document.getElementById('dob').value;
-        if (!name || !dob) {
-            renderUI(null);
-            return;
-        }
-        const profile = getNumerologyProfile(name, dob);
-        if (!profile) {
-            renderUI(null);
-            return;
-        }
-        renderUI(profile);
-    }
-
-    function initOccasionButtons() {
-        const btns = document.querySelectorAll('.occ-btn');
-        btns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                btns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                currentOccasion = this.dataset.occasion;
-                const rootEl = document.getElementById('rootValue');
-                if (rootEl && rootEl.innerText !== '--') {
-                    const rootVal = parseInt(rootEl.innerText);
-                    if (!isNaN(rootVal)) updateDress(rootVal);
-                } else {
-                    onUpdate();
-                }
-            });
-        });
-    }
-
-    document.getElementById('syncBtn').addEventListener('click', onUpdate);
-    document.getElementById('fullName').addEventListener('input', onUpdate);
-    document.getElementById('dob').addEventListener('change', onUpdate);
-    window.addEventListener('DOMContentLoaded', () => {
-        initOccasionButtons();
-        onUpdate();
-    });
+// ============================================================
+//  INIT
+// ============================================================
+window.addEventListener('DOMContentLoaded', ()=>{
+  renderMain();
+});
 </script>
 </body>
 </html>
