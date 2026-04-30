@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Vibrance • Name Vibration, Lucky Number & Colour Oracle</title>
-    <meta name="description" content="Discover your name's vibration (compound number), root number, destiny number, lucky numbers, and sacred colours based on ancient numerology.">
+    <title>Numeriscope • Name Vibration, Lucky Number, Colour & Harmony Oracle</title>
+    <meta name="description" content="Discover your name vibration (compound number), root number, destiny number, lucky colours, harmonious numbers, numbers to avoid, and dress code guidance.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -15,352 +16,507 @@
         }
 
         body {
-            background: #fefaf5;
+            background: linear-gradient(145deg, #fef7ef 0%, #f9f0e4 100%);
             font-family: 'Inter', sans-serif;
-            color: #221c15;
-            padding: 2rem 1rem;
+            color: #2a2418;
+            min-height: 100vh;
+            padding: 1.5rem;
         }
 
         .container {
-            max-width: 680px;
+            max-width: 820px;
             margin: 0 auto;
         }
 
         /* header */
-        .mandala-header {
+        .hero {
             text-align: center;
             margin-bottom: 2rem;
+            padding: 1rem 0;
         }
 
-        .badge {
-            display: inline-block;
-            background: #efe4d5;
-            border-radius: 60px;
-            padding: 0.25rem 1rem;
+        .floating-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,240,0.8);
+            backdrop-filter: blur(4px);
+            border-radius: 100px;
+            padding: 0.35rem 1.2rem;
             font-size: 0.7rem;
-            font-weight: 500;
+            font-weight: 600;
             letter-spacing: 1px;
-            color: #a5713c;
+            color: #b17a42;
+            border: 1px solid #ecdbba;
             margin-bottom: 1rem;
         }
 
         h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            font-weight: 500;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
             letter-spacing: -0.02em;
-            background: linear-gradient(135deg, #2c241a, #9b7b4c);
+            background: linear-gradient(135deg, #2c2418, #c28a4e);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
+            margin-bottom: 0.3rem;
+        }
+
+        .subhead {
+            color: #8b765c;
+            font-size: 0.85rem;
+            border-top: 1px solid #e5d5c2;
+            display: inline-block;
+            padding-top: 0.6rem;
+        }
+
+        /* main card */
+        .oracle-card {
+            background: #fffffffb;
+            border-radius: 2.5rem;
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.02);
+            border: 1px solid #f1e4d4;
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .input-group {
+            margin-bottom: 1.4rem;
+        }
+
+        .input-group label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #c4935e;
+            display: block;
             margin-bottom: 0.5rem;
         }
 
-        .sub {
-            color: #6b5a48;
-            font-size: 0.85rem;
-            border-top: 1px solid #e8ddcf;
-            display: inline-block;
-            padding-top: 0.5rem;
-        }
-
-        /* card */
-        .card {
-            background: rgba(255, 255, 245, 0.96);
-            backdrop-filter: blur(0px);
-            border-radius: 2rem;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
-            border: 1px solid #f0e5d8;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            transition: transform 0.2s ease;
-        }
-
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-
-        label {
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            color: #b2804a;
-            display: block;
-            margin-bottom: 0.4rem;
-        }
-
-        input {
+        .input-group input {
             width: 100%;
-            padding: 0.85rem 0;
+            padding: 0.9rem 0;
             background: transparent;
             border: none;
-            border-bottom: 1.5px solid #ecdccb;
-            font-size: 1rem;
+            border-bottom: 2px solid #efdfce;
+            font-size: 1.05rem;
             font-family: 'Inter', monospace;
             transition: all 0.2s;
             outline: none;
-            color: #2c241a;
+            color: #2c2418;
         }
 
-        input:focus {
-            border-bottom-color: #d49b5f;
+        .input-group input:focus {
+            border-bottom-color: #d19b60;
         }
 
-        .info-panel {
-            background: #fffaf3;
-            border-radius: 1.2rem;
-            padding: 1.2rem;
-            margin-top: 1rem;
-            border: 1px solid #f2e4d6;
-        }
-
-        .num-row {
-            display: flex;
-            flex-wrap: wrap;
+        /* stats grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 1rem;
-            justify-content: space-between;
-            margin-bottom: 1rem;
-        }
-
-        .num-pill {
-            flex: 1;
-            background: white;
-            border-radius: 2rem;
-            padding: 0.7rem 0.5rem;
-            text-align: center;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            background: #fef9f2;
+            border-radius: 1.8rem;
+            padding: 1.2rem;
+            margin: 1rem 0 0.8rem;
             border: 1px solid #f0e2d2;
         }
 
-        .num-pill .label {
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-label {
             font-size: 0.6rem;
-            font-weight: 600;
-            color: #b68b54;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: #c79a64;
             letter-spacing: 1px;
         }
 
-        .num-pill .value {
-            font-size: 1.7rem;
-            font-weight: 600;
-            font-family: monospace;
-            color: #35281c;
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 700;
+            font-family: 'Cormorant Garamond', monospace;
+            color: #3e2c1c;
             line-height: 1.2;
         }
 
-        .lucky-section {
-            background: #fff7ef;
+        /* dual banners */
+        .info-banner {
             border-radius: 1.2rem;
-            padding: 0.9rem 1rem;
-            margin-top: 1rem;
-        }
-
-        .lucky-title {
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            color: #b6813f;
-            margin-bottom: 0.6rem;
+            padding: 1rem 1.2rem;
+            margin: 0.8rem 0;
             display: flex;
-            gap: 0.4rem;
             align-items: center;
+            gap: 0.9rem;
+            flex-wrap: wrap;
+            backdrop-filter: blur(2px);
         }
 
-        .colour-palette {
+        .banner-friends {
+            background: #eef4e8;
+            border-left: 5px solid #7c9f5e;
+        }
+
+        .banner-avoid {
+            background: #fff3e9;
+            border-left: 5px solid #daa06a;
+        }
+
+        .banner-icon {
+            font-size: 1.4rem;
+        }
+
+        .banner-text {
+            flex: 1;
+            font-size: 0.82rem;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        /* luck section */
+        .luck-section {
+            background: #fffaf2;
+            border-radius: 1.5rem;
+            padding: 1rem 1.2rem;
+            margin: 1rem 0;
+            border: 1px solid #f2e3d2;
+        }
+
+        .section-title {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            color: #c2935c;
+            margin-bottom: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .colour-strip {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.9rem;
-            margin: 0.6rem 0;
+            gap: 1rem;
+            margin: 0.5rem 0;
+        }
+
+        .colour-chip {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .colour-dot {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 2px solid white;
+        }
+
+        .chip-label {
+            font-size: 0.65rem;
+            font-weight: 500;
+        }
+
+        .number-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-top: 0.5rem;
+        }
+
+        .number-pill {
+            background: white;
+            border-radius: 40px;
+            padding: 0.2rem 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #b97f48;
+            border: 1px solid #eedbc8;
+        }
+
+        /* compound block */
+        .compound-card {
+            background: #f6efe6;
+            border-radius: 1.5rem;
+            padding: 1.2rem;
+            margin: 1rem 0;
+            border-left: 5px solid #dba16d;
+        }
+
+        .compound-title {
+            font-weight: 700;
+            font-size: 1rem;
+            font-family: monospace;
+            color: #7a552f;
+        }
+
+        .compound-desc {
+            font-size: 0.8rem;
+            line-height: 1.45;
+            margin-top: 0.4rem;
+            color: #4c3b28;
+        }
+
+        .correction-notice {
+            background: #fff0e0;
+            border-radius: 1rem;
+            padding: 0.8rem 1rem;
+            margin-top: 0.8rem;
+            font-size: 0.72rem;
+            border-left: 3px solid #e08f4a;
+            color: #a25621;
+            display: flex;
+            gap: 0.6rem;
             align-items: center;
         }
 
-        .colour-swatch {
+        /* dress section */
+        .dress-panel {
+            background: linear-gradient(115deg, #fef7ed, #fcf4e8);
+            border-radius: 1.5rem;
+            padding: 1.2rem;
+            margin: 1rem 0;
+            border: 1px solid #eedbc8;
+        }
+
+        .occasion-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .occ-btn {
+            background: #f3e8dd;
+            border: none;
+            border-radius: 60px;
+            padding: 0.4rem 1.1rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #81694b;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .occ-btn.active, .occ-btn:hover {
+            background: #cf9f6e;
+            color: white;
+        }
+
+        .dress-reco {
+            background: white;
+            border-radius: 1.2rem;
+            padding: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .swatch-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.7rem;
+        }
+
+        .dress-swatch {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 0.3rem;
         }
 
-        .circle {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            border: 2px solid white;
-            transition: transform 0.1s ease;
+        .swatch-rect {
+            width: 55px;
+            height: 55px;
+            border-radius: 16px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
 
-        .colour-name {
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: #5a4a38;
-        }
-
-        .lucky-numbers {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 0.6rem;
-        }
-
-        .num-badge {
-            background: #ffffffcc;
-            backdrop-filter: blur(4px);
-            border-radius: 60px;
-            padding: 0.2rem 1rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #ab6f3a;
-            border: 1px solid #f3e1ce;
-        }
-
-        .compound-block {
-            background: #f6efe7;
-            border-radius: 1.2rem;
-            padding: 1rem;
-            margin-top: 0.8rem;
-            border-left: 4px solid #dba16d;
-        }
-
-        .compound-number {
-            font-family: monospace;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: #7a4f25;
-        }
-
-        .vibration-desc {
-            font-size: 0.8rem;
-            line-height: 1.45;
-            color: #3e3327;
-            margin-top: 0.35rem;
-        }
-
-        .warning-note {
-            background: #fff0e4;
-            border-radius: 1rem;
-            padding: 0.7rem 1rem;
-            font-size: 0.7rem;
-            margin-top: 0.7rem;
-            color: #af5a2e;
-            border-left: 3px solid #dd8b4c;
-        }
-
-        .btn {
-            background: #2a241e;
+        .btn-primary {
+            background: #2f261e;
             color: white;
             border: none;
             width: 100%;
             padding: 1rem;
             border-radius: 3rem;
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.9rem;
-            letter-spacing: 0.5px;
             cursor: pointer;
+            margin-top: 0.8rem;
             transition: all 0.25s;
-            margin-top: 0.5rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.6rem;
-            font-family: 'Inter', sans-serif;
+            gap: 0.5rem;
         }
 
-        .btn:hover {
-            background: #40362c;
-            transform: translateY(-1px);
+        .btn-primary:hover {
+            background: #4a3a2c;
+            transform: translateY(-2px);
         }
 
         footer {
             text-align: center;
-            font-size: 0.65rem;
-            color: #b7a48e;
+            font-size: 0.6rem;
+            color: #bbaa94;
             margin-top: 2rem;
-            border-top: 1px solid #eadbcb;
-            padding-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e8d9ca;
         }
 
-        hr {
-            border: none;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #e3d4c2, transparent);
-            margin: 1rem 0;
-        }
-
-        @media (max-width: 480px) {
-            .num-row {
-                flex-direction: column;
-                gap: 0.6rem;
-            }
-            .container {
-                padding: 0 0.2rem;
-            }
-            h1 {
-                font-size: 2rem;
-            }
+        @media (max-width: 550px) {
+            .stats-grid { grid-template-columns: 1fr; gap: 0.5rem; }
+            body { padding: 1rem; }
+            h1 { font-size: 2.4rem; }
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="mandala-header">
-        <div class="badge">✨ SOUND + COSMOS ✨</div>
-        <h1>vibration<br>oracle</h1>
-        <p class="sub">name compound · root number · destiny number · lucky colours & numbers</p>
+    <div class="hero">
+        <div class="floating-badge"><i class="fas fa-moon"></i> NUMEROLOGY ORACLE</div>
+        <h1>vibration & harmony</h1>
+        <p class="subhead">name compound · root number · destiny · friends & avoid · dress code</p>
     </div>
 
-    <!-- main card: single person -->
-    <div class="card">
-        <div class="form-group">
-            <label>✧ FULL NAME (as used)</label>
-            <input type="text" id="fullName" placeholder="example: Maya Rose" value="Maya Rose" autocomplete="name">
+    <div class="oracle-card">
+        <div class="input-group">
+            <label><i class="fas fa-feather-alt"></i> FULL NAME (letters only)</label>
+            <input type="text" id="fullName" placeholder="e.g. Maya Rose" value="Maya Rose">
         </div>
-        <div class="form-group">
-            <label>☾ DATE OF BIRTH (for destiny & root number)</label>
+        <div class="input-group">
+            <label><i class="fas fa-calendar-alt"></i> DATE OF BIRTH (root & destiny)</label>
             <input type="date" id="dob" value="1995-06-21">
         </div>
 
-        <!-- key numbers display -->
-        <div class="info-panel">
-            <div class="num-row">
-                <div class="num-pill"><div class="label">ROOT NUMBER</div><div class="value" id="rootValue">--</div></div>
-                <div class="num-pill"><div class="label">DESTINY NUMBER</div><div class="value" id="destinyValue">--</div></div>
-                <div class="num-pill"><div class="label">NAME VIBRATION</div><div class="value" id="compoundValue">--</div></div>
+        <!-- key numbers -->
+        <div class="stats-grid">
+            <div class="stat-item"><div class="stat-label">ROOT NUMBER</div><div class="stat-number" id="rootValue">--</div></div>
+            <div class="stat-item"><div class="stat-label">DESTINY NUMBER</div><div class="stat-number" id="destinyValue">--</div></div>
+            <div class="stat-item"><div class="stat-label">NAME VIBRATION</div><div class="stat-number" id="compoundValue">--</div></div>
+        </div>
+
+        <!-- friendship banner -->
+        <div id="friendsBanner" class="info-banner banner-friends" style="display: none;">
+            <div class="banner-icon"><i class="fas fa-hand-sparkles"></i></div>
+            <div class="banner-text" id="friendsMessage"></div>
+        </div>
+
+        <!-- numbers to avoid banner (gentle) -->
+        <div id="avoidBanner" class="info-banner banner-avoid" style="display: none;">
+            <div class="banner-icon"><i class="fas fa-compass"></i></div>
+            <div class="banner-text" id="avoidMessage"></div>
+        </div>
+
+        <!-- lucky colours + lucky numbers -->
+        <div class="luck-section">
+            <div class="section-title"><i class="fas fa-palette"></i> AURA COLOURS · LUCKY SHADES</div>
+            <div class="colour-strip" id="colourPalette"></div>
+            <div class="section-title" style="margin-top: 0.8rem;"><i class="fas fa-star-of-life"></i> LUCKY NUMBERS (based on root)</div>
+            <div class="number-list" id="luckyNumbersList"></div>
+        </div>
+
+        <!-- name vibration compound block -->
+        <div class="compound-card">
+            <div class="compound-title" id="compoundDisplayName">—</div>
+            <div class="compound-desc" id="vibrationDesc">Enter your name & birth date to reveal sacred name vibration.</div>
+            <div id="correctionNotice" style="display: none;" class="correction-notice">
+                <i class="fas fa-leaf"></i> <span id="correctionText">⚠️ This compound number carries challenging vibrations. A numerological name correction is recommended for greater harmony, success, and energetic flow.</span>
             </div>
         </div>
 
-        <!-- LUCKY COLOURS + LUCKY NUMBERS (dynamic) -->
-        <div class="lucky-section" id="luckySection">
-            <div class="lucky-title">🎨 AURA COLOURS · LUCKY SHADES</div>
-            <div class="colour-palette" id="colourPalette"></div>
-            <div class="lucky-title">🔢 LUCKY NUMBERS (based on root)</div>
-            <div class="lucky-numbers" id="luckyNumbersList"></div>
+        <!-- dress oracle section -->
+        <div class="dress-panel">
+            <div class="section-title"><i class="fas fa-vest"></i> DRESS CODE ORACLE</div>
+            <div class="occasion-group">
+                <span style="font-size:0.7rem; font-weight:600;">OCCASION</span>
+                <div>
+                    <button class="occ-btn active" data-occasion="daily">✨ Daily</button>
+                    <button class="occ-btn" data-occasion="date">❤️ Date</button>
+                    <button class="occ-btn" data-occasion="meeting">🤝 Meeting</button>
+                    <button class="occ-btn" data-occasion="party">🎉 Party</button>
+                    <button class="occ-btn" data-occasion="spiritual">🕯️ Spiritual</button>
+                </div>
+            </div>
+            <div class="dress-reco">
+                <div class="swatch-group" id="dressColoursList"></div>
+                <div id="dressAdviceText" style="font-size:0.75rem; color:#5f4a34; border-top: 1px dashed #eedbc8; padding-top: 0.6rem;">Select occasion to see clothing guidance</div>
+            </div>
         </div>
 
-        <!-- COMPOUND NAME VIBRATION (interpretation) -->
-        <div class="compound-block" id="compoundBlock">
-            <div><span class="compound-number" id="compoundDisplayName">—</span></div>
-            <div class="vibration-desc" id="vibrationDesc">Enter name to reveal sacred name vibration (10–80 range).</div>
-            <div id="correctionWarning" class="warning-note" style="display: none;">⚠️ This compound number carries challenging vibrations. Name balancing recommended for energetic harmony.</div>
-        </div>
-
-        <button class="btn" id="checkBtn"><span>🪄</span> Reveal vibration & fortune</button>
-    </div>
-
-    <!-- extra esoteric note -->
-    <div style="background: #fffaf2; border-radius: 1.2rem; padding: 1rem; text-align: center; margin-top: 0.2rem;">
-        <span style="font-size:0.7rem; color:#b38046;">☽ name compound = full name sum reduced between 10–80 according to ancient numerology</span>
+        <button class="btn-primary" id="syncBtn"><i class="fas fa-gem"></i> Reveal complete profile</button>
     </div>
     <footer>
-        <span>✦ name vibration • root number • destiny number • colour oracle ✦</span><br>
-        inspired by Chaldean & Pythagorean traditions — guidance only
+        <i class="fas fa-circle-nodes"></i> root number friends & avoid list · name compound 10–80 · ancient numerology wisdom
     </footer>
 </div>
 
 <script>
-    // ----------------------------------------------
-    // NUMEROLOGY CORE (letters to numbers mapping)
-    // ----------------------------------------------
+    // --------------------------------------------------------------
+    // ENEMY NUMBERS (Numbers to avoid) - exact as user defined
+    // enemy for 1:3,9 ; 2:8 ; 3:1 ; 4:3,9 ; 5:none ; 6:none ; 7:9 ; 8:9,1 ; 9:4,7
+    // --------------------------------------------------------------
+    const enemyMap = {
+        1: [3, 9],
+        2: [8],
+        3: [1],
+        4: [3, 9],
+        5: [],
+        6: [],
+        7: [9],
+        8: [9, 1],
+        9: [4, 7]
+    };
+
+    // FRIENDSHIP MAP (positive connections)
+    const friendshipMap = {
+        1: [1, 2, 4, 7],
+        2: [1, 2, 7, 9],
+        3: [3, 6, 9],
+        4: [1, 2, 4, 7, 8],
+        5: [5, 6, 3, 9],
+        6: [6, 9, 3],
+        7: [2, 3, 6],
+        8: [8, 3, 6, 4],
+        9: [9, 6, 3]
+    };
+
+    function getHarmoniousNumbers(root) {
+        return friendshipMap[root] || [root];
+    }
+
+    function getNumbersToAvoid(root) {
+        return enemyMap[root] || [];
+    }
+
+    // positive friendship message
+    function getFriendsMessage(root) {
+        const friends = getHarmoniousNumbers(root);
+        const unique = [...new Set(friends)].sort((a,b)=>a-b);
+        const others = unique.filter(n => n !== root);
+        if (others.length === 0) return `✨ Root ${root} carries sovereign energy — you naturally align with your own path.`;
+        return `🌸 Your root number ${root} shares natural harmony with numbers ${others.join(', ')}. These vibrations attract support, understanding, and fortunate connections.`;
+    }
+
+    // gentle avoid message
+    function getAvoidMessage(root) {
+        const avoidList = getNumbersToAvoid(root);
+        if (avoidList.length === 0) return `🍃 Root ${root} has no challenging number relationships. You flow gracefully with all energies.`;
+        return `🌙 For smoother alignment, bring mindful awareness around numbers ${avoidList.join(', ')}. With consciousness, any dynamic can be navigated with grace.`;
+    }
+
+    // --------------------------------------------------------------
+    // NUMEROLOGY CORE
+    // --------------------------------------------------------------
     const letterValues = new Map([
         ['A',1], ['I',1], ['J',1], ['Q',1], ['Y',1],
         ['B',2], ['K',2], ['R',2],
@@ -372,33 +528,22 @@
         ['F',8], ['P',8]
     ]);
 
-    // Helper: sum digits until single digit (1-9)
     function reduceToSingleDigit(num) {
         if (num === 0) return 0;
         while (num > 9) {
-            let sum = 0;
-            let temp = num;
-            while (temp > 0) {
-                sum += temp % 10;
-                temp = Math.floor(temp / 10);
-            }
-            num = sum;
+            let s = 0, t = num;
+            while (t > 0) { s += t % 10; t = Math.floor(t/10); }
+            num = s;
         }
         return num;
     }
 
-    // reduce to compound range (10-80) based on standard numerological transformation:
-    // for name number we want the "compound number" in range 10-80 if raw sum is between 10-80, else iterative reduction until value >=10 and <=80, finally if reaches 1-9 it stays core.
     function reduceToCompoundRange(rawSum) {
         if (rawSum >= 10 && rawSum <= 80) return rawSum;
         let current = rawSum;
         while (current > 80 || current < 10) {
-            let digitSum = 0;
-            let t = current;
-            while (t > 0) {
-                digitSum += t % 10;
-                t = Math.floor(t / 10);
-            }
+            let digitSum = 0, t = current;
+            while (t > 0) { digitSum += t % 10; t = Math.floor(t/10); }
             current = digitSum;
             if (current >= 10 && current <= 80) break;
             if (current >= 1 && current <= 9) return current;
@@ -406,39 +551,29 @@
         return current;
     }
 
-    // get raw name sum from full name (only A-Z)
     function getRawNameSum(fullName) {
         if (!fullName) return 0;
         const clean = fullName.toUpperCase().replace(/[^A-Z]/g, '');
         let sum = 0;
-        for (let ch of clean) {
-            if (letterValues.has(ch)) sum += letterValues.get(ch);
-        }
+        for (let ch of clean) if (letterValues.has(ch)) sum += letterValues.get(ch);
         return sum;
     }
 
-    // Root number from birth day (day of month)
     function getRootNumberFromDate(dobStr) {
         if (!dobStr) return null;
         const date = new Date(dobStr);
         if (isNaN(date.getTime())) return null;
-        const day = date.getDate();
-        return reduceToSingleDigit(day);
+        return reduceToSingleDigit(date.getDate());
     }
 
-    // Destiny number = sum day+month+year reduced to single digit
     function getDestinyNumber(dobStr) {
         if (!dobStr) return null;
         const date = new Date(dobStr);
         if (isNaN(date.getTime())) return null;
-        const day = date.getDate();
-        const month = date.getMonth() + 1;
-        const year = date.getFullYear();
-        const total = day + month + year;
-        return reduceToSingleDigit(total);
+        const day = date.getDate(), month = date.getMonth()+1, year = date.getFullYear();
+        return reduceToSingleDigit(day + month + year);
     }
 
-    // get full profile: name compound, root, destiny
     function getNumerologyProfile(fullName, dobStr) {
         if (!fullName || !dobStr) return null;
         const rawSum = getRawNameSum(fullName);
@@ -447,236 +582,161 @@
         const root = getRootNumberFromDate(dobStr);
         const destiny = getDestinyNumber(dobStr);
         if (root === null || destiny === null) return null;
-        return {
-            rawSum,
-            compound,
-            root,
-            destiny,
-            firstName: fullName.trim().split(' ')[0] || "Soul"
-        };
+        return { rawSum, compound, root, destiny, firstName: fullName.trim().split(' ')[0] || "Soul" };
     }
 
-    // ---------- LUCKY COLOURS based on root number ----------
+    // ---------- LUCKY COLOURS & NUMBERS ----------
     const luckyColoursMap = {
-        1: ["Red", "Orange", "Gold"],
-        2: ["White", "Silver", "Orange"],
-        3: ["Yellow", "Purple", "Pink"],
-        4: ["Blue", "Grey"],
-        5: ["Green", "Turquoise"],
-        6: ["White", "Light Blue", "Green"],
-        7: ["Light Yellow", "White", "Green"],
-        8: ["Dark Blue", "Black"],
-        9: ["Red", "Maroon", "Rose"]
+        1: ["Red", "Orange", "Gold"], 2: ["White", "Silver", "Orange"], 3: ["Yellow", "Purple", "Pink"],
+        4: ["Blue", "Grey"], 5: ["Green", "Turquoise"], 6: ["White", "Light Blue", "Green"],
+        7: ["Light Yellow", "White", "Green"], 8: ["Dark Blue", "Black"], 9: ["Red", "Maroon", "Rose"]
     };
-
     const colourHex = {
-        "Red": "#e66151", "Orange": "#ffaa5e", "Gold": "#e4ba48", "White": "#f8f6f0", "Silver": "#ccccd9",
-        "Yellow": "#ffdd77", "Purple": "#b77ee0", "Pink": "#f7b2c2", "Blue": "#6290c4", "Grey": "#afb8c2",
-        "Green": "#73b06f", "Turquoise": "#56c0b0", "Light Blue": "#a6ceff", "Dark Blue": "#2c4763", "Black": "#2a2a2a",
-        "Maroon": "#b54646", "Rose": "#ffc0db", "Light Yellow": "#fff0b3"
+        "Red":"#e66151","Orange":"#ffaa5e","Gold":"#e4ba48","White":"#f8f6f0","Silver":"#ccccd9",
+        "Yellow":"#ffdd77","Purple":"#b77ee0","Pink":"#f7b2c2","Blue":"#6290c4","Grey":"#afb8c2",
+        "Green":"#73b06f","Turquoise":"#56c0b0","Light Blue":"#a6ceff","Dark Blue":"#2c4763","Black":"#2a2a2a",
+        "Maroon":"#b54646","Rose":"#ffc0db","Light Yellow":"#fff0b3"
     };
 
-    // Lucky numbers per root (traditional numerological lucky digits)
     function getLuckyNumbersArray(root) {
-        const mapping = {
-            1: [1,2, 4, 7],
-            2: [1,2, 7,9],
-            3: [3, 6, 9],
-            4: [1,2,4,7,8],
-            5: [5,6, 3, 9],
-            6: [6, 9, 3],
-            7: [2,3,6],
-            8: [8, 3,6, 4],
-            9: [9, 6, 3]
-        };
+        const mapping = { 1:[1,4,7], 2:[2,5,8], 3:[3,6,9], 4:[1,4,8], 5:[5,3,9], 6:[6,9,3], 7:[7,2,5], 8:[8,1,4], 9:[9,6,3] };
         return mapping[root] || [root];
     }
 
-    // ---------- COMPOUND VIBRATION DICTIONARY (sacred exact meanings) ----------
+    // ---------- COMPOUND MEANINGS & NEGATIVE CHECK ----------
     const compoundMeanings = {
-        10: "Wheel of Fortune. Leadership, fame, but results depend on personal effort. High potential for success.",
-        11: "A hungry lion bound — difficult lessons, betrayal possible. Calls for spiritual integrity.",
-        12: "Self-sacrifice. Suffering due to others' actions. Transcend through service.",
-        13: "Extremity: great rise or fall. Adaptability is key.",
-        14: "Storm energy — lucky for change, business risk. Unpredictable but transformative.",
-        15: "Magic and mystic. Impulsive but very lucky unless combined with 4/8 vibrations.",
-        16: "The fallen tower. Misfortune through destiny's hand. Caution advised.",
-        17: "Immortal star. Lucky number that brings fame and overcoming obstacles.",
-        18: "Shining moon — family troubles, enemies. Money via unconventional means.",
-        19: "The Sun. Extremely lucky, happiness, success, fulfillment.",
-        20: "Angel's trumpet. Justice, new opportunities, success through nature.",
-        21: "The World. Prosperity, career peak, recognition after struggle.",
-        22: "Blindness from others' errors. Unlucky, poor decisions due to influence.",
-        23: "Royal star of the lion. Very lucky, high support from powerful people.",
-        24: "Success in love & partnership. Rising with help of opposite sex.",
-        25: "Success through struggle; early difficulties yield future rewards.",
-        26: "Future problems, defamation. Avoid speculation.",
-        27: "The Sceptre. Power, leadership if independent work.",
-        28: "Opposition, legal issues. Betrayal possible.",
-        29: "Uncertainty, tension with friends or partners.",
-        30: "Neutral, intellectual. Success depends on thoughts.",
-        31: "Solitude, not family-oriented. Philosophical mind.",
-        32: "Very lucky: fame, success. Trust intuition.",
-        33: "Same as 24 — success in love, help from partnerships.",
-        34: "Struggle then prosperity (like 25).",
-        35: "Warning of future problems, defamation (as 26).",
-        36: "Leadership (like 27). Authority when working alone.",
-        37: "Unity, fame; success in friendship, partnerships.",
-        38: "Uncertainty (like 29). Tension from close ones.",
-        39: "Neutral intellectual energy (like 30).",
-        40: "Solitude, inner search (like 31).",
-        41: "Fame & intuition (like 32). Lucky.",
-        42: "Love success (24 energy).",
-        43: "Struggle, rivalry, obstacles.",
-        44: "Future problems warning.",
-        45: "Sceptre power (27).",
-        46: "Unity & fame (37).",
-        47: "Betrayal possible (29).",
-        48: "Neutral intellectual.",
-        49: "Solitude energy.",
-        50: "Very lucky, fame.",
-        51: "Warrior victory — unexpected strength, but enemy risk.",
-        52: "Struggle, obstacles (like 43).",
-        53: "Intelligent, lucky for politicians & military.",
-        54: "Success, prosperity. Spiritual recitation advised for safety.",
-        55: "Hasty decisions, regret. Business reconsideration needed.",
-        56: "Effort-driven success, spendthrift. Name adjustment can help.",
-        57: "Lucky business, joyful nature. No change needed.",
-        58: "Emotional, kind, budget struggles.",
-        59: "Problems but travel brings benefit.",
-        60: "Attitude shift needed; name okay.",
-        61: "Early difficulty, later success. Change beneficial if under 40.",
-        62: "Hardworking, sudden rise. Change business.",
-        63: "Lucky, helpful, spendthrift.",
-        64: "Family/colleague tension, financial luck. Positive shift via name.",
-        65: "Material wealth, accident prone. Spiritual recitation.",
-        66: "Magnetic personality, success through charm.",
-        67: "Success later in life. Healthy, fearless.",
-        68: "Depression, lack of support. Immediate change suggested.",
-        69: "Lucky, financially sound, blessed marriage.",
-        70: "Luxurious life, minor struggles early.",
-        71: "Emotional advisor, lucky.",
-        72: "Childhood hardship — change name advised.",
-        73: "Prosperous, religious, independent.",
-        74: "Patient alert; avoid financial responsibility for others.",
-        75: "Health problems, betrayal.",
-        76: "Total success, harmonious marriage.",
-        77: "Obstacles, financial struggle. Name change recommended.",
-        78: "Constant tension, failure despite effort.",
-        79: "Success & prosperity, accident prone.",
-        80: "Lucky & religious; change name only for financial rise."
+        10:"Wheel of Fortune — fame, effort-based success.", 11:"A hungry lion bound — difficult lessons, inner growth.", 12:"Self-sacrifice, wisdom.", 13:"Extremity: dynamic rise or fall.",
+        14:"Storm energy, lucky for change.", 15:"Magic & mystic, impulsive luck.", 16:"Fallen tower — learning curve.", 17:"Immortal star, very lucky.", 18:"Moon — family depth, enemies.", 19:"Sun — happiness, success.",
+        20:"Angel's trumpet: justice, new paths.", 21:"The World: prosperity after struggle.", 22:"Blindness from errors — caution.", 23:"Royal star, very lucky.", 24:"Success in love.", 25:"Struggle to success.",
+        26:"Future problems warning.", 27:"The Sceptre, leadership.", 28:"Opposition, legal caution.", 29:"Uncertainty, betrayal possible.", 30:"Neutral intellectual.", 31:"Solitude, inner path.", 32:"Very lucky, fame.", 33:"Love success.",
+        34:"Struggle then prosperity.", 35:"Defamation warning.", 36:"Leadership power.", 37:"Unity & fame.", 38:"Tension from close ones.", 39:"Neutral intellect.", 40:"Solitude depth.", 41:"Fame & intuition.",
+        42:"Love & partnership.", 43:"Struggle, rivalry.", 44:"Future planning needed.", 45:"Sceptre power.", 46:"Unity & fame.", 47:"Betrayal possible.", 48:"Neutral clarity.", 49:"Solitude wisdom.", 50:"Very lucky.",
+        51:"Warrior victory, strength.", 52:"Struggle, obstacles.", 53:"Intelligent, lucky.", 54:"Success, prosperity.", 55:"Hasty decisions — rethink.", 56:"Effort-driven success.", 57:"Lucky business.", 58:"Emotional depth.",
+        59:"Travel benefits.", 60:"Attitude shift.", 61:"Early difficulty, later success.", 62:"Hardworking, sudden rise.", 63:"Lucky, helpful.", 64:"Family tension, financial luck.", 65:"Wealth, accident prone.",
+        66:"Magnetic success.", 67:"Later success.", 68:"Depression, lack of support — name correction advised.", 69:"Lucky, blessed marriage.", 70:"Luxurious life.", 71:"Emotional advisor.", 72:"Childhood hardship — change name suggested.",
+        73:"Prosperous, religious.", 74:"Patient alert.", 75:"Health problems, betrayal.", 76:"Total success.", 77:"Obstacles — name correction recommended.", 78:"Constant tension, failure.", 79:"Success, accident prone.", 80:"Lucky & religious."
     };
 
-    const negativeCompounds = new Set([11, 12, 16, 18, 22, 26, 28, 29, 31, 35, 38, 40, 43, 44, 47, 52, 56, 59, 64, 68, 72, 75, 77, 78]);
+    const negativeCompounds = new Set([11,12,16,18,22,26,28,29,31,35,38,40,43,44,47,52,56,59,64,68,72,75,77,78]);
 
-    function getCompoundDescription(compound) {
-        if (compoundMeanings[compound]) return compoundMeanings[compound];
-        if (compound >= 1 && compound <= 9) return `${compound}: Core number — foundational life energy. Harmonious when balanced.`;
-        return `${compound}: Unique sacred compound vibration. Reflects karmic patterns.`;
+    function getCompoundDescription(c) { return compoundMeanings[c] || `${c}: sacred compound vibration.`; }
+    function isNegativeCompound(c) { return negativeCompounds.has(c); }
+
+    // dress oracle
+    let currentOccasion = "daily";
+    function getDressRecommendation(auraColors, occasion) {
+        const primary = auraColors[0] || "Gold";
+        const secondary = auraColors[1] || primary;
+        const tertiary = auraColors[2] || secondary;
+        const tips = {
+            daily: `Embrace your natural aura with ${primary} accents. A ${primary.toLowerCase()} accessory or top harmonizes daily energy.`,
+            date: `Ignite romance: wear ${primary} or ${secondary} shades. ${primary} dress or ${secondary} jewelry attracts loving vibrations.`,
+            meeting: `Command confidence: ${primary} and ${secondary} tones project authority. A blazer in ${primary} recommended.`,
+            party: `Celebrate with radiance: ${primary}, ${tertiary} bring magnetic joy. Bold ${primary} outfit shines.`,
+            spiritual: `Elevate meditation: wear ${primary === "White" ? "White or Silver" : primary} and soft ${secondary}. Light fabrics enhance intuition.`
+        };
+        let tip = tips[occasion] || tips.daily;
+        let recColours = [primary];
+        if (secondary && secondary !== primary) recColours.push(secondary);
+        if (occasion === "party" && tertiary && !recColours.includes(tertiary)) recColours.push(tertiary);
+        if (occasion === "spiritual") recColours = recColours.filter(c => c !== "Black" && c !== "Dark Blue");
+        return { colours: recColours.slice(0,3), advice: tip };
     }
 
-    function isNegativeCompound(num) {
-        return negativeCompounds.has(num);
-    }
-
-    // render colour palette with swatch + name
-    function renderColourPalette(rootNum) {
-        const colours = luckyColoursMap[rootNum] || ["Sand", "Cream"];
-        const container = document.getElementById('colourPalette');
-        if (!container) return;
-        container.innerHTML = '';
-        for (let col of colours) {
-            const hex = colourHex[col] || '#cfb797';
-            const swatchDiv = document.createElement('div');
-            swatchDiv.className = 'colour-swatch';
-            swatchDiv.innerHTML = `
-                <div class="circle" style="background: ${hex};"></div>
-                <span class="colour-name">${col}</span>
-            `;
-            container.appendChild(swatchDiv);
-        }
-    }
-
-    function renderLuckyNumbers(rootNum) {
-        const nums = getLuckyNumbersArray(rootNum);
-        const container = document.getElementById('luckyNumbersList');
-        if (!container) return;
-        container.innerHTML = nums.map(n => `<span class="num-badge">${n}</span>`).join('');
-    }
-
-    // update full UI based on input
-    function updateOracle() {
-        const nameInput = document.getElementById('fullName').value.trim();
-        const dobVal = document.getElementById('dob').value;
-
-        if (!nameInput || !dobVal) {
-            // show empty state
-            document.getElementById('rootValue').innerText = '--';
-            document.getElementById('destinyValue').innerText = '--';
-            document.getElementById('compoundValue').innerText = '--';
-            document.getElementById('compoundDisplayName').innerHTML = '—';
-            document.getElementById('vibrationDesc').innerHTML = 'Enter name & birth date to reveal vibration.';
-            document.getElementById('correctionWarning').style.display = 'none';
-            document.getElementById('colourPalette').innerHTML = '<div class="colour-swatch"><span style="font-size:0.7rem;">—</span></div>';
-            document.getElementById('luckyNumbersList').innerHTML = '<span class="num-badge">—</span>';
-            return;
-        }
-
-        const profile = getNumerologyProfile(nameInput, dobVal);
+    function renderUI(profile) {
         if (!profile) {
-            document.getElementById('rootValue').innerText = '?';
-            document.getElementById('destinyValue').innerText = '?';
-            document.getElementById('compoundValue').innerText = 'err';
-            document.getElementById('vibrationDesc').innerHTML = 'Please use valid name (letters only) and date.';
+            document.getElementById('rootValue').innerText = '--'; document.getElementById('destinyValue').innerText = '--';
+            document.getElementById('compoundValue').innerText = '--'; document.getElementById('compoundDisplayName').innerHTML = '—';
+            document.getElementById('vibrationDesc').innerHTML = 'Enter valid name & date.';
+            document.getElementById('correctionNotice').style.display = 'none';
+            document.getElementById('friendsBanner').style.display = 'none';
+            document.getElementById('avoidBanner').style.display = 'none';
+            document.getElementById('colourPalette').innerHTML = ''; document.getElementById('luckyNumbersList').innerHTML = '';
             return;
         }
-
         const { root, destiny, compound, rawSum, firstName } = profile;
-
-        // update numbers
         document.getElementById('rootValue').innerText = root;
         document.getElementById('destinyValue').innerText = destiny;
-        const rawInfo = (rawSum !== compound && compound !== rawSum) ? ` (${rawSum}→${compound})` : '';
-        document.getElementById('compoundValue').innerHTML = `${compound}${rawInfo}`;
-
-        // compound interpretation block
-        const compoundDesc = getCompoundDescription(compound);
-        document.getElementById('compoundDisplayName').innerHTML = `${firstName} · ${compound}`;
-        document.getElementById('vibrationDesc').innerHTML = compoundDesc;
-
+        const rawNote = (rawSum !== compound) ? ` (${rawSum}→${compound})` : '';
+        document.getElementById('compoundValue').innerHTML = `${compound}${rawNote}`;
+        document.getElementById('compoundDisplayName').innerHTML = `${firstName} · Name Vibration ${compound}`;
+        document.getElementById('vibrationDesc').innerHTML = getCompoundDescription(compound);
+        
         const isNeg = isNegativeCompound(compound);
-        const warningDiv = document.getElementById('correctionWarning');
+        const correctionDiv = document.getElementById('correctionNotice');
         if (isNeg) {
-            warningDiv.style.display = 'block';
-            warningDiv.innerHTML = `⚠️ Name vibration ${compound} carries intense or challenging frequencies. A numerological name correction is recommended to align with greater harmony, success, and ease.`;
+            correctionDiv.style.display = 'flex';
+            document.getElementById('correctionText').innerHTML = `⚠️ Name vibration ${compound} carries challenging frequencies. A numerological name correction (by an expert) is strongly recommended to align your energy for greater harmony, success, and ease.`;
         } else {
-            warningDiv.style.display = 'none';
+            correctionDiv.style.display = 'none';
         }
+
+        // friends & avoid banners
+        document.getElementById('friendsBanner').style.display = 'flex';
+        document.getElementById('friendsMessage').innerHTML = getFriendsMessage(root);
+        document.getElementById('avoidBanner').style.display = 'flex';
+        document.getElementById('avoidMessage').innerHTML = getAvoidMessage(root);
 
         // lucky colours
-        renderColourPalette(root);
-        renderLuckyNumbers(root);
+        const colours = luckyColoursMap[root] || ["Gold"];
+        const colourContainer = document.getElementById('colourPalette');
+        colourContainer.innerHTML = colours.map(c => `<div class="colour-chip"><div class="colour-dot" style="background:${colourHex[c]||'#cfb797'}"></div><span class="chip-label">${c}</span></div>`).join('');
+        
+        const luckyNums = getLuckyNumbersArray(root);
+        const luckyContainer = document.getElementById('luckyNumbersList');
+        luckyContainer.innerHTML = luckyNums.map(n => `<span class="number-pill">${n}</span>`).join('');
 
-        // additional small effect: sometimes show compound note about raw sum if change is dramatic
-        if (rawSum !== compound && rawSum > 9) {
-            // optional subtle note inside compound block
-            const extraNote = document.getElementById('vibrationDesc');
-            if (!compoundDesc.includes("reduced")) {
-                // keep original meaning but not intrusive
-            }
-        }
+        // dress
+        updateDress(root);
     }
 
-    // event listeners + INIT
-    document.getElementById('checkBtn').addEventListener('click', () => updateOracle());
-    const nameField = document.getElementById('fullName');
-    const dobField = document.getElementById('dob');
-    if (nameField) nameField.addEventListener('input', () => updateOracle());
-    if (dobField) dobField.addEventListener('change', () => updateOracle());
+    function updateDress(root) {
+        const aura = luckyColoursMap[root] || ["Gold"];
+        const { colours, advice } = getDressRecommendation(aura, currentOccasion);
+        const dressContainer = document.getElementById('dressColoursList');
+        dressContainer.innerHTML = colours.map(c => `<div class="dress-swatch"><div class="swatch-rect" style="background:${colourHex[c]||'#cbb986'}"></div><span style="font-size:0.6rem;">${c}</span></div>`).join('');
+        document.getElementById('dressAdviceText').innerHTML = `<i class="fas fa-feather"></i> ${advice}`;
+    }
 
-    // initial load
+    function onUpdate() {
+        const name = document.getElementById('fullName').value.trim();
+        const dob = document.getElementById('dob').value;
+        if (!name || !dob) {
+            renderUI(null);
+            return;
+        }
+        const profile = getNumerologyProfile(name, dob);
+        if (!profile) {
+            renderUI(null);
+            return;
+        }
+        renderUI(profile);
+    }
+
+    function initOccasionButtons() {
+        const btns = document.querySelectorAll('.occ-btn');
+        btns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                btns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentOccasion = this.dataset.occasion;
+                const rootEl = document.getElementById('rootValue');
+                if (rootEl && rootEl.innerText !== '--') {
+                    const rootVal = parseInt(rootEl.innerText);
+                    if (!isNaN(rootVal)) updateDress(rootVal);
+                } else {
+                    onUpdate();
+                }
+            });
+        });
+    }
+
+    document.getElementById('syncBtn').addEventListener('click', onUpdate);
+    document.getElementById('fullName').addEventListener('input', onUpdate);
+    document.getElementById('dob').addEventListener('change', onUpdate);
     window.addEventListener('DOMContentLoaded', () => {
-        updateOracle();
+        initOccasionButtons();
+        onUpdate();
     });
 </script>
 </body>
