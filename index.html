@@ -559,5 +559,80 @@ document.getElementById('consultBtn').addEventListener('click',()=>{
 });
 window.addEventListener('DOMContentLoaded',renderMain);
 </script>
+
+
+<!-- FLOATING WHATSAPP SHARE BUTTON -->
+<a href="#" id="whatsappShareBtn" class="wa-float" aria-label="Share on WhatsApp">
+  <svg viewBox="0 0 32 32" width="28" height="28" fill="white">
+    <path d="M19.11 17.19c-.29-.15-1.69-.83-1.95-.92-.26-.1-.45-.15-.64.15-.19.29-.73.92-.89 1.11-.17.19-.33.22-.62.07-.29-.15-1.21-.45-2.31-1.44-.85-.76-1.43-1.69-1.59-1.98-.17-.29-.02-.44.13-.59.13-.13.29-.33.44-.49.15-.17.19-.29.29-.49.1-.19.05-.37-.02-.52-.07-.15-.64-1.54-.88-2.11-.23-.55-.47-.47-.64-.48l-.55-.01c-.19 0-.49.07-.74.33-.26.26-.98.96-.98 2.35 0 1.39 1 2.73 1.14 2.92.15.19 1.97 3 4.77 4.21.67.29 1.19.46 1.59.59.67.21 1.28.18 1.76.11.54-.08 1.69-.69 1.93-1.36.24-.67.24-1.24.17-1.36-.07-.12-.26-.19-.55-.33z"/>
+    <path d="M16.03 3C8.84 3 3 8.74 3 15.82c0 2.49.73 4.92 2.11 7L3 29l6.39-2.05c1.99 1.08 4.23 1.65 6.55 1.65h.01C23.16 28.6 29 22.86 29 15.78 29 8.74 23.16 3 16.03 3zm0 23.02h-.01c-2.07 0-4.1-.56-5.86-1.61l-.42-.25-3.79 1.21 1.24-3.67-.27-.45a10.2 10.2 0 01-1.58-5.43c0-5.64 4.67-10.23 10.41-10.23 5.74 0 10.41 4.59 10.41 10.23 0 5.64-4.67 10.2-10.13 10.2z"/>
+  </svg>
+</a>
+
+<style>
+.wa-float{
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  width:62px;
+  height:62px;
+  border-radius:50%;
+  background:#25D366;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 10px 30px rgba(37,211,102,0.35);
+  z-index:9999;
+  transition:all 0.3s ease;
+  text-decoration:none;
+  animation:waPulse 2.2s infinite;
+}
+
+.wa-float:hover{
+  transform:translateY(-4px) scale(1.05);
+  box-shadow:0 16px 40px rgba(37,211,102,0.45);
+}
+
+@keyframes waPulse{
+  0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5);}
+  70%{box-shadow:0 0 0 16px rgba(37,211,102,0);}
+  100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
+}
+
+@media(max-width:600px){
+  .wa-float{
+    width:58px;
+    height:58px;
+    bottom:18px;
+    right:18px;
+  }
+}
+</style>
+
+<script>
+document.getElementById('whatsappShareBtn').addEventListener('click', function(e){
+  e.preventDefault();
+
+  const shareText =
+`✨ Check out this Free Name Analysis & Lucky Colour Calculator
+
+Discover:
+🔮 Name Vibration
+🎨 Lucky Colours
+💫 Destiny Number
+📅 Personal Year
+💖 Harmony Numbers
+
+Try it here:
+${window.location.href}`;
+
+  const whatsappURL =
+    "https://wa.me/?text=" + encodeURIComponent(shareText);
+
+  window.open(whatsappURL, '_blank');
+});
+</script>
+
+  
 </body>
 </html>
